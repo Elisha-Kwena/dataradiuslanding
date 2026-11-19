@@ -5,11 +5,25 @@
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+
+  --color-brand: #4C00C7;
+  --color-brand-yellow: #ffc933;
+
+  --font-akhirtahun: var(--font-akhirtahun-variable);
+  --font-oblisk: var(--font-oblisk-variable);
+  --font-autobus: var(--font-autobus-variable);
+  --font-supershiny: var(--font-supershiny-variable);
+  --font-earlybird: var(--font-earlybird-variable);
+  --font-ibmblockserif: var(--font-ibmblockserif-variable);
+
+  /* Set Cambria as the default sans font */
+  --font-sans: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+  /* Optional: Set default fonts for specific use cases */
+  --font-heading: var(--font-autobus), Cambria, serif;
+  --font-brand: var(--font-akhirtahun), Cambria, serif;
+  --font-display: var(--font-supershiny), cursive;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +37,44 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+
+@theme {
+  --animate-marquee: marquee 45s linear infinite;
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+/* Custom scrollbars: thin slate thumb on transparent track */
+:root {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(51 65 85 / 0.7) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(51 65 85 / 0.7);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(30 64 175 / 0.8);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }
