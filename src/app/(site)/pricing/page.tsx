@@ -32,7 +32,7 @@ import NetworkBackground from "@/components/ui/NetworkBackground";
 import Marquee from "@/components/ui/Marquee";
 import Reveal from "@/components/ui/Reveal";
 import PricingCalculator from "@/components/pages/pricing/PricingCalculator";
-import { PRICING, WIFI_FEE_PCT } from "../../lib/pricingConfig";
+import { PRICING, WIFI_FEE_PCT } from "@/lib/pricingConfig";
 import { CurrencyToggle, Money } from "@/contexts/PricingContext";
 
 export const metadata: Metadata = {

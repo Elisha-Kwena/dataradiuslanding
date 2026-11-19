@@ -3,8 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { akhirTahun, autobusOmnibus, superShiny, earlybird, ibmblockserif, anton } from '../lib/fonts';
 import "./globals.css";
 
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 import { CurrencyProvider } from "@/contexts/PricingContext";
 
 const geistSans = Geist({
@@ -30,11 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
        className={`${geistSans.variable} ${geistMono.variable} ${akhirTahun.variable} ${autobusOmnibus.variable} ${superShiny.variable} ${ibmblockserif.variable} ${earlybird.variable} ${anton.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-serif">
-        <CurrencyProvider>
-          <Navbar />
-          {children}
-          <Footer />
-        </CurrencyProvider>
+        <CurrencyProvider>{children}</CurrencyProvider>
         </body>
     </html>
   );

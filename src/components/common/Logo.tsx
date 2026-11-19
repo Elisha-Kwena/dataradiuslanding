@@ -14,7 +14,7 @@ export default function Logo (){
                     className="object-center object-contain"
                 />
             </div>
-            <h1 className=" text-blue-800 font-[fantasy] -mb-1 font-extrabold text-3xl">DataRadius</h1>
+            <h1 className=" text-blue-800 font-fantasy -mb-1 font-extrabold text-3xl">DataRadius</h1>
         </Link>
     )
 }
