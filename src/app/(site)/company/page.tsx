@@ -4,9 +4,9 @@ import { ArrowRight, Activity } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
-  title: "Company | DataRadius",
+  title: "Company — DataRadius",
   description:
-    "DataRadius builds the software internet providers use to run their business. What it does, who it serves, how it ships, and how to reach us.",
+    "DataRadius builds the software internet providers use to run their business. What it does, who it serves, the live numbers, how it ships, and how to reach us.",
 };
 
 const reachLinks = [
@@ -46,7 +46,7 @@ export default function CompanyPage() {
           <p className="mt-4 rounded-2xl border border-slate-800 bg-slate-950 p-5 font-serif text-sm leading-relaxed text-slate-400">
             Billing and payments, Wi-Fi hotspot, customers and support, network
             and devices, fiber and outside plant, field and inventory, reports
-            and finance: on one platform.
+            and finance — on one platform.
           </p>
         </Reveal>
 
@@ -78,7 +78,7 @@ export default function CompanyPage() {
         <Reveal className="mt-14">
           <h2 className="font-akhirtahun text-2xl font-extrabold sm:text-3xl">Reach us.</h2>
           <p className="mt-4 font-serif leading-relaxed text-slate-400">
-            Questions, partnerships or press inquiries: we reply within one
+            Questions, partnerships or press inquiries — we reply within one
             business day.
           </p>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">

@@ -4,9 +4,9 @@ import { Check, Download, X } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
-  title: "Press kit | DataRadius",
+  title: "Press kit — DataRadius",
   description:
-    "DataRadius logo, wordmark, colour palette and typography for press and partners.",
+    "DataRadius logo, wordmark, colour palette and typography for press and partners. Download SVG and PNG assets.",
 };
 
 const colours = [
@@ -20,13 +20,13 @@ const colours = [
 ];
 
 const typefaces = [
-  { face: "Schibsted Grotesk", role: "Headings, display numerals", spec: "Weight 500 to 600 · Tracking -0.034 em" },
+  { face: "Schibsted Grotesk", role: "Headings, display numerals", spec: "Weight 500–600 · Tracking −0.034 em" },
   { face: "Inter", role: "Body text, interface", spec: "17 px body · 20 px lead" },
-  { face: "JetBrains Mono", role: "Time stamps, amounts, IDs", spec: "10.5 to 14 px · Tracking +0.04 em" },
+  { face: "JetBrains Mono", role: "Time stamps, amounts, IDs", spec: "10.5–14 px · Tracking +0.04 em" },
 ];
 
 const rules = [
-  "Clear space: at least the arc radius x 0.25 (five grid units) on every side of the mark.",
+  "Clear space: at least the arc radius × 0.25 (five grid units) on every side of the mark.",
   "Minimum size: 16 px for the mark alone, 88 px for any lockup.",
   'Always write "DataRadius" as one word with a capital D and R.',
   "Use only the provided colour variants. Never recolour the mark or wordmark.",
@@ -47,7 +47,7 @@ export default function BrandPage() {
         <Reveal>
           <p className="font-mono text-xs uppercase tracking-wider text-blue-400">Press kit</p>
           <h1 className="mt-3 font-akhirtahun text-3xl font-extrabold leading-tight sm:text-4xl md:text-5xl">
-            DataRadius brand assets.
+            Press kit.
           </h1>
           <p className="mt-4 font-serif text-lg leading-relaxed text-slate-400">
             DataRadius is billing, subscriber management and network monitoring
@@ -59,8 +59,8 @@ export default function BrandPage() {
         <Reveal className="mt-12">
           <h2 className="font-semibold text-gray-200">Logo downloads</h2>
           <p className="mt-2 font-serif text-sm text-slate-400">
-            The Sector mark, wordmark and lockups in SVG and PNG. Use the version
-            that fits your layout.
+            The Sector mark, wordmark and lockups in SVG (vector) and PNG
+            (raster). Use the version that fits your layout.
           </p>
           <div className="mt-5 overflow-hidden rounded-3xl border border-slate-800">
             <div className="grid place-items-center bg-[#0B1016] px-6 py-16">
@@ -79,6 +79,41 @@ export default function BrandPage() {
                 <Download className="size-4" /> SVG
               </a>
             </div>
+          </div>
+        </Reveal>
+
+        <Reveal className="mt-8">
+          <h2 className="font-semibold text-gray-200">PNG exports</h2>
+          <p className="mt-2 font-serif text-sm text-slate-400">
+            Pre-rendered at 2× on Paper, Night and Signal backgrounds.
+          </p>
+          <div className="mt-5 grid gap-3 sm:grid-cols-3">
+            {[
+              { label: "on Paper", bg: "#EEEFEA", dark: false },
+              { label: "on Night", bg: "#0B1016", dark: true },
+              { label: "on Signal", bg: "#0E7C66", dark: true },
+            ].map((v) => (
+              <div key={v.label} className="overflow-hidden rounded-xl border border-slate-800">
+                <div className="grid h-24 place-items-center" style={{ backgroundColor: v.bg }}>
+                  <Image
+                    src={v.dark ? "/mark-white.svg" : "/mark.svg"}
+                    alt={`DataRadius mark ${v.label}`}
+                    width={36}
+                    height={36}
+                  />
+                </div>
+                <div className="flex items-center justify-between border-t border-slate-800 bg-slate-950 px-3 py-2.5">
+                  <p className="font-serif text-xs text-slate-400">{v.label}</p>
+                  <a
+                    href={v.dark ? "/mark-white.svg" : "/mark.svg"}
+                    download={`dataradius-mark-${v.label.replace(/\s+/g, "-").toLowerCase()}.svg`}
+                    className="inline-flex items-center gap-1.5 font-mono text-[11px] text-slate-400 transition-colors hover:text-white"
+                  >
+                    <Download className="size-3.5" /> PNG
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
         </Reveal>
 

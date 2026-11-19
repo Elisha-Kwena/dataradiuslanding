@@ -7,9 +7,9 @@ import Reveal from "@/components/ui/Reveal";
 import RoleSwitcher from "@/components/pages/products/RoleSwitcher";
 
 export const metadata: Metadata = {
-  title: "Product | See every part of your ISP",
+  title: "ISP management software — DataRadius",
   description:
-    "Billing, network devices, fiber, Wi-Fi hotspot, field teams and subscribers: one system for every role in your ISP.",
+    "Billing, network devices, fiber, Wi-Fi hotspot, field teams and subscribers — one system for every role in your ISP.",
 };
 
 /* ------------------------------ content ------------------------------ */
@@ -44,9 +44,7 @@ export default function ProductsPage() {
           </div>
 
           <h1 className="font-akhirtahun text-4xl font-extrabold leading-[1.05] sm:text-5xl md:text-7xl">
-            See every part of
-            <br />
-            your <span className="text-blue-800">ISP.</span>
+            See every part of your <span className="text-blue-800">ISP.</span>
           </h1>
 
           <p className="max-w-2xl font-serif text-xl text-slate-400 md:text-2xl">

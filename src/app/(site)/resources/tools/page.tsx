@@ -3,9 +3,7 @@ import Link from "next/link";
 import {
   ArrowRight,
   ArrowUpDown,
-  Calculator,
   Lightbulb,
-  MoveRight,
   Network,
   TrendingUp,
   Wand2,
@@ -52,21 +50,6 @@ const tools = [
   },
 ];
 
-const extras = [
-  {
-    icon: Calculator,
-    title: "Bill estimator",
-    text: "Move the sliders, customers, Wi-Fi sales and plan price, and watch a sample monthly invoice update live.",
-    href: "/pricing#calculator",
-  },
-  {
-    icon: MoveRight,
-    title: "Migration planner",
-    text: "Answer four questions about your current system and get a phased migration plan with a timeline estimate.",
-    href: "/switch#planner",
-  },
-];
-
 export default function ToolsPage() {
   return (
     <main className="min-h-screen w-full bg-black text-white">
@@ -77,18 +60,18 @@ export default function ToolsPage() {
             <p className="px-2 font-mono text-xs uppercase tracking-widest text-white">Free tools</p>
           </div>
           <h1 className="font-akhirtahun text-4xl font-extrabold leading-[1.05] sm:text-5xl md:text-7xl">
-            Calculators for <span className="text-blue-800">ISP operators.</span>
+            Free tools for <span className="text-blue-800">ISP operators.</span>
           </h1>
           <p className="max-w-2xl font-serif text-xl text-slate-400 md:text-2xl">
-            Fiber budgets, revenue, uplink sizing, subnets and captive portals.
-            No signup. No email. Just the numbers you came for.
+            Calculators and generators built from the same code that powers
+            DataRadius. No sign-up, no tracking — just answers.
           </p>
         </div>
       </section>
 
       <section className="mx-auto w-[90%] py-16">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {[...tools, ...extras].map((t, i) => {
+          {tools.map((t, i) => {
             const Icon = t.icon;
             return (
               <Reveal key={t.title} delay={(i % 3) * 80}>
@@ -110,6 +93,29 @@ export default function ToolsPage() {
             );
           })}
         </div>
+      </section>
+
+      <section className="mx-auto w-[90%] pb-24 pt-10">
+        <Reveal>
+          <div className="relative isolate overflow-hidden rounded-3xl border border-slate-700 px-6 py-20 text-center">
+            <NetworkBackground />
+            <h2 className="mx-auto max-w-3xl font-akhirtahun text-2xl sm:text-5xl md:text-6xl font-extrabold">
+              Run your ISP from <span className="text-blue-800">one place.</span>
+            </h2>
+            <p className="mx-auto mt-5 max-w-xl font-serif text-lg text-slate-400">
+              14 days free · No credit card required · Cancel anytime
+            </p>
+            <div className="mt-8">
+              <Link
+                href="/signup"
+                className="group inline-flex items-center justify-center gap-3 rounded-full bg-white p-4 px-8 text-black transition-all duration-500 ease-in-out hover:bg-blue-800 hover:text-white"
+              >
+                Start free
+                <ArrowRight className="transition-all duration-500 ease-in-out group-hover:translate-x-2" />
+              </Link>
+            </div>
+          </div>
+        </Reveal>
       </section>
     </main>
   );

@@ -25,31 +25,31 @@ export const metadata: Metadata = {
 /* ------------------------------ content ------------------------------ */
 
 const promises: { icon: LucideIcon; title: string; text: string }[] = [
-  { icon: UserCheck, title: "A named migration engineer", text: "One person from import to go-live. They know your network before the first router moves." },
-  { icon: FileCheck, title: "A written plan before you commit", text: "The planner below builds a phased plan from your answers. Your engineer reviews it and sends the final version." },
-  { icon: Unplug, title: "Your old system stays on", text: "No weekend cut-overs. Both systems run side by side for as long as you need: until you approve." },
+  { icon: UserCheck, title: "A named migration engineer on your move", text: "One person from import to go-live. They know your network before the first router moves." },
+  { icon: FileCheck, title: "A written migration plan before you commit", text: "The planner below builds a phased plan from your answers. Your engineer reviews it and sends the final version." },
+  { icon: Unplug, title: "Your old system stays on until you approve", text: "No weekend cut-overs. Both systems run side by side for as long as you need." },
   { icon: Columns2, title: "One billing cycle side by side", text: "Every customer, every invoice, every payment compared across both systems before you retire the old one." },
-  { icon: MoveRight, title: "Routers move one at a time", text: "Start with a pilot site. Roll back any router in minutes. Move the rest when you are satisfied." },
+  { icon: MoveRight, title: "Routers move one at a time, each reversible", text: "Start with a pilot site. Roll back any router in minutes. Move the rest when you are satisfied." },
 ];
 
 const phases: { label: string; detail: string }[] = [
-  { label: "Inventory", detail: "Export subscribers, plans, balances, open invoices and router details from your current system. Your engineer flags anything that needs attention." },
-  { label: "Import and reconcile", detail: "The import wizard maps your CSV columns. Counts and balances are reconciled against the source before anything goes live." },
+  { label: "Inventory", detail: "Export subscribers, plans, balances, open invoices and router details from your current system. Your engineer reviews the export and flags anything that needs attention." },
+  { label: "Import and reconcile", detail: "The import wizard maps your CSV columns. Subscriber counts and balances are reconciled against the source before anything goes live." },
   { label: "Side-by-side billing cycle", detail: "Run one full billing cycle in both systems. Compare invoices, collections and active-customer totals line by line." },
-  { label: "Pilot router", detail: "Pick one site and move its router. Verify every subscriber authenticates, gets the right speed and shows up in billing. Rollback plan ready." },
-  { label: "Router-by-router migration", detail: "Move routers in batches or one at a time. Each router is one connection: disconnect it and it returns to the old setup." },
-  { label: "Payment migration", detail: "Point payment callbacks to DataRadius at a quiet hour. A dual-acceptance window catches payments to either system." },
-  { label: "Cut-over and morning-after checks", detail: "Cut over at a billing-cycle boundary with a freeze window and named owners. Old system stays read-only for 30 days." },
+  { label: "Pilot router", detail: "Pick one site and move its router. Verify that every subscriber behind it authenticates, gets the right speed and shows up in billing. Written rollback plan ready." },
+  { label: "Router-by-router migration", detail: "Move routers in batches or one at a time. Each router is one connection — disconnect it from DataRadius and it returns to the old setup." },
+  { label: "Payment migration", detail: "Point payment callbacks to DataRadius at a quiet hour. Card tokens transfer where the gateway allows. A dual-acceptance window catches payments to either system." },
+  { label: "Cut-over and morning-after checks", detail: "Cut over at a billing-cycle boundary with a freeze window and named owners. Morning-after checks verify every subscriber is billed and connected. Old system stays read-only for at least 30 days." },
 ];
 
-const guides: { title: string; text: string; href: string }[] = [
-  { title: "Splynx", text: "What moves, field mapping, timeline and what to check.", href: "/switch/from-splynx" },
-  { title: "UISP", text: "Customers, sites and devices: what transfers and what to watch for.", href: "/switch/from-uisp" },
-  { title: "MikroTik User Manager", text: "Profiles, users and limitations: from User Manager to plan-based billing.", href: "/switch/from-mikrotik-user-manager" },
-  { title: "Mikhmon", text: "Vouchers, users and hotspot profiles: what changes when you move.", href: "/switch/from-mikhmon" },
-  { title: "Sonar", text: "Subscribers, billing, IP management and field ops: what moves from Sonar.", href: "/switch/from-sonar" },
-  { title: "Powercode", text: "Customers, services, inventory and dispatch: what transfers from Powercode.", href: "/switch/from-powercode" },
-  { title: "Spreadsheets or another system", text: "A free tool or something else: tell us what you run and we will map the move.", href: "/switch/from-spreadsheets" },
+const guides: { title: string; text: string; href: string; linkLabel: string }[] = [
+  { title: "Splynx", text: "What moves, field mapping, timeline and what to check.", href: "/switch/from-splynx", linkLabel: "Splynx switching guide" },
+  { title: "UISP", text: "Customers, sites and devices — what transfers and what to watch for.", href: "/switch/from-uisp", linkLabel: "UISP switching guide" },
+  { title: "MikroTik User Manager", text: "Profiles, users and limitations — from User Manager to plan-based billing.", href: "/switch/from-mikrotik-user-manager", linkLabel: "User Manager guide" },
+  { title: "Mikhmon", text: "Vouchers, users and hotspot profiles — what changes when you move.", href: "/switch/from-mikhmon", linkLabel: "Mikhmon switching guide" },
+  { title: "Sonar", text: "Subscribers, billing, IP management and field ops — what moves from Sonar.", href: "/switch/from-sonar", linkLabel: "Sonar switching guide" },
+  { title: "Powercode", text: "Customers, services, inventory and dispatch — what transfers from Powercode.", href: "/switch/from-powercode", linkLabel: "Powercode switching guide" },
+  { title: "Spreadsheets or another system", text: "Spreadsheets, a free tool or something else — tell us what you run and we will map the move.", href: "/switch/from-spreadsheets", linkLabel: "General switching guide" },
 ];
 
 const faqs: { q: string; a: string }[] = [
@@ -76,7 +76,7 @@ export default function SwitchPage() {
           </div>
 
           <h1 className="font-akhirtahun text-4xl font-extrabold leading-[1.05] sm:text-5xl md:text-7xl">
-            Switch without switching
+            Switch to DataRadius without switching
             <br />
             anything <span className="text-blue-800">off.</span>
           </h1>
@@ -110,7 +110,7 @@ export default function SwitchPage() {
           <p className="mb-3 font-mono text-xs uppercase tracking-wider text-blue-400">What we commit to</p>
           <h2 className="font-akhirtahun text-2xl sm:text-4xl md:text-5xl font-extrabold">Every migration, guaranteed.</h2>
           <p className="mt-4 font-serif text-lg text-slate-400">
-            These come with every move. No exceptions.
+            Every migration includes these guarantees. No exceptions.
           </p>
         </Reveal>
 
@@ -138,7 +138,7 @@ export default function SwitchPage() {
       <section className="mx-auto w-[90%] py-20">
         <Reveal className="mb-12 max-w-2xl">
           <p className="mb-3 font-mono text-xs uppercase tracking-wider text-blue-400">How migration works</p>
-          <h2 className="font-akhirtahun text-2xl sm:text-4xl md:text-5xl font-extrabold">Seven phases. A checkpoint before each.</h2>
+          <h2 className="font-akhirtahun text-2xl sm:text-4xl md:text-5xl font-extrabold">Seven phases, each with a clear checkpoint.</h2>
         </Reveal>
 
         <ol className="relative grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -161,8 +161,8 @@ export default function SwitchPage() {
                 <p className="font-mono text-[11px] uppercase tracking-wider text-blue-300/80">Honest caveat</p>
                 <p className="font-serif text-sm leading-relaxed text-slate-300">
                   A reliable timeline needs a tested plan for your network. The
-                  planner gives an estimate: your engineer refines it after
-                  reviewing your export.
+                  planner below gives an estimate — your migration engineer
+                  refines it after reviewing your export.
                 </p>
               </div>
             </Reveal>
@@ -176,7 +176,7 @@ export default function SwitchPage() {
           <p className="mb-3 font-mono text-xs uppercase tracking-wider text-blue-400">Plan your move</p>
           <h2 className="font-akhirtahun text-2xl sm:text-4xl md:text-5xl font-extrabold">Answer four questions. Get a phased plan.</h2>
           <p className="mt-4 font-serif text-lg text-slate-400">
-            Takes two minutes. The plan and the timeline estimate update from your answers.
+            Answer four questions and get a phased migration plan with a timeline estimate.
           </p>
         </Reveal>
         <Reveal>
@@ -203,7 +203,7 @@ export default function SwitchPage() {
                   <p className="mt-2 font-serif text-sm leading-relaxed text-slate-400">{g.text}</p>
                 </div>
                 <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-slate-500 transition-colors group-hover:text-blue-400">
-                  {g.title} guide
+                  {g.linkLabel}
                   <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
               </Link>

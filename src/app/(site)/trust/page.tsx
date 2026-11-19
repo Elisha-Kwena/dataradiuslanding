@@ -4,9 +4,9 @@ import { Activity, ArrowRight, Check, Mail } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
-  title: "Trust and security | DataRadius",
+  title: "Trust and security — DataRadius",
   description:
-    "How DataRadius keeps your ISP online and your data under your control: availability, exports, backups, access controls and privacy.",
+    "How DataRadius keeps your ISP online and your data under your control — availability, exports, backups, access controls and privacy.",
 };
 
 const dataItems = [
@@ -89,24 +89,31 @@ export default function TrustPage() {
             data, keeps your billing running and puts you in control of
             everything you store with us.
           </p>
+          <Link
+            href="/demo"
+            className="group mt-6 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-blue-400 transition-colors hover:text-white"
+          >
+            Explore the live product
+            <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
         </Reveal>
 
         <div className="mt-12 flex flex-col gap-5">
           <Section
             title="Always visible, always accountable."
-            body="The public status page shows live system health and a 90-day history of every incident: what happened, when it was resolved and what changed. You never have to ask whether DataRadius is up."
+            body="The public status page shows live system health and a 90-day history of every incident — what happened, when it was resolved and what changed. You never have to ask whether DataRadius is up."
             links={[{ label: "View status page", href: "/status" }]}
           />
 
           <Section
             title="Your data is yours."
-            body="Subscribers, invoices, payments, device records: export everything at any time in CSV or JSON. No waiting on support, no fee, no lock-in."
+            body="Subscribers, invoices, payments, device records — export everything at any time in CSV or JSON. No waiting on support, no fee, no lock-in."
             items={dataItems}
           />
 
           <Section
             title="Access only where it belongs."
-            body="Every team member gets exactly the permissions they need: nothing more."
+            body="Every team member gets exactly the permissions they need — nothing more."
             items={accessItems}
           />
 
@@ -117,7 +124,7 @@ export default function TrustPage() {
 
           <Section
             title="Compliance and roadmap."
-            body="DataRadius publishes what it can today: a data processing agreement, a sub-processor list, a privacy policy and a vulnerability disclosure process. The marketing site uses cookie-free analytics: no consent banner required. Formal third-party security auditing is planned; dates and results will appear here as they happen."
+            body="DataRadius publishes what it can today: a data processing agreement, a sub-processor list, a privacy policy and a vulnerability disclosure process. The marketing site uses cookie-free analytics — no consent banner required. Formal third-party security auditing is planned; dates and results will appear here as they happen."
             links={complianceLinks}
           />
 

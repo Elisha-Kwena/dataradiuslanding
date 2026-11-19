@@ -7,9 +7,9 @@ import GuideGrid from "@/components/pages/learn/GuideGrid";
 import { guides } from "@/lib/content/guides";
 
 export const metadata: Metadata = {
-  title: "Learn | Answers first, then the detail",
+  title: "Learn",
   description:
-    "Plain-English guides for ISP owners and engineers: billing, networks, fiber, Wi-Fi and growth. Every guide opens with a one-sentence answer.",
+    "Plain-English guides for ISP owners and engineers — billing, networks, fiber, Wi-Fi and growth. Every section opens with a one-sentence answer.",
 };
 
 export default function LearnPage() {
@@ -25,8 +25,8 @@ export default function LearnPage() {
             Answers first, then <span className="text-blue-800">the detail.</span>
           </h1>
           <p className="max-w-2xl font-serif text-xl text-slate-400 md:text-2xl">
-            Plain-English guides for ISP owners and engineers: billing,
-            networks, fiber, Wi-Fi and growth. Every guide opens with a
+            Plain-English guides for ISP owners and engineers — billing,
+            networks, fiber, Wi-Fi and growth. Every section opens with a
             one-sentence answer.
           </p>
         </div>
@@ -56,6 +56,29 @@ export default function LearnPage() {
               <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
             </span>
           </Link>
+        </Reveal>
+      </section>
+
+      <section className="mx-auto w-[90%] pb-24 pt-10">
+        <Reveal>
+          <div className="relative isolate overflow-hidden rounded-3xl border border-slate-700 px-6 py-20 text-center">
+            <NetworkBackground />
+            <h2 className="mx-auto max-w-3xl font-akhirtahun text-2xl sm:text-5xl md:text-6xl font-extrabold">
+              Put what you learned into <span className="text-blue-800">practice.</span>
+            </h2>
+            <p className="mx-auto mt-5 max-w-xl font-serif text-lg text-slate-400">
+              14 days free. No credit card required.
+            </p>
+            <div className="mt-8">
+              <Link
+                href="/signup"
+                className="group inline-flex items-center justify-center gap-3 rounded-full bg-white p-4 px-8 text-black transition-all duration-500 ease-in-out hover:bg-blue-800 hover:text-white"
+              >
+                Start free
+                <ArrowRight className="transition-all duration-500 ease-in-out group-hover:translate-x-2" />
+              </Link>
+            </div>
+          </div>
         </Reveal>
       </section>
     </main>

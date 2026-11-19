@@ -81,6 +81,22 @@ export default function DocsPage() {
             </div>
           ))}
         </div>
+
+        <Reveal>
+          <div className="mt-14 flex flex-col items-center gap-5 rounded-3xl border border-white/10 bg-white/[0.02] px-6 py-12 text-center">
+            <h2 className="font-akhirtahun text-2xl font-extrabold sm:text-4xl">
+              Ready to get <span className="text-blue-800">started?</span>
+            </h2>
+            <p className="font-serif text-slate-400">14 days free. No credit card required.</p>
+            <Link
+              href="/signup"
+              className="group flex items-center justify-center gap-3 rounded-full bg-white p-4 px-8 text-black transition-all duration-500 ease-in-out hover:bg-blue-800 hover:text-white"
+            >
+              Start free
+              <ArrowRight className="transition-all duration-500 group-hover:translate-x-2" />
+            </Link>
+          </div>
+        </Reveal>
       </section>
     </main>
   );

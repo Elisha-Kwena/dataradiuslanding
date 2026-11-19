@@ -7,6 +7,12 @@ import type { ProductPageData } from "@/lib/productPages";
 
 const mono = "font-mono text-[10px] tracking-wider";
 
+function linkHref(label?: string): string {
+  if (label === "Check compatibility") return "/compatibility";
+  if (label === "Open the designer") return "/resources/tools/hotspot-login-generator";
+  return "/demo";
+}
+
 export default function ProductPageLayout({ data }: { data: ProductPageData }) {
   return (
     <main className="min-h-screen w-full bg-black text-white">
@@ -37,10 +43,10 @@ export default function ProductPageLayout({ data }: { data: ProductPageData }) {
               <ArrowRight className="transition-all duration-500 ease-in-out group-hover:translate-x-2" />
             </Link>
             <Link
-              href="/#live-demo"
+              href={linkHref(data.heroSecondary)}
               className="flex items-center justify-center gap-2 rounded-full border-2 border-transparent p-4 text-white transition-all duration-500 ease-in-out hover:border-blue-800 hover:text-blue-800"
             >
-              Explore the live product
+              {data.heroSecondary}
             </Link>
           </div>
         </div>
@@ -49,22 +55,36 @@ export default function ProductPageLayout({ data }: { data: ProductPageData }) {
       {/* ============================== FEATURES ============================== */}
       <section className="mx-auto w-[90%] py-20">
         <div className="flex flex-col gap-20">
-          {data.features.map((f, i) => (
+          {data.features.map((f, i) => {
+            const hasVisual = Boolean(f.steps || f.items || f.bullets);
+            return (
             <Reveal key={f.title}>
-              <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
-                <div className={i % 2 === 1 ? "lg:order-2" : ""}>
+              <div className={hasVisual ? "grid items-center gap-8 lg:grid-cols-2 lg:gap-16" : "mx-auto max-w-3xl text-center"}>
+                <div className={hasVisual && i % 2 === 1 ? "lg:order-2" : ""}>
                   <p className={`${mono} text-blue-500`}>{String(i + 1).padStart(2, "0")}</p>
                   <h2 className="mt-3 font-akhirtahun text-2xl font-extrabold tracking-tight md:text-4xl">
                     {f.title}
                   </h2>
-                  <p className="mt-4 max-w-lg font-serif leading-relaxed text-slate-400">
-                    {f.body}
-                  </p>
+                  {f.body && (
+                    <p className="mt-4 max-w-lg font-serif leading-relaxed text-slate-400">
+                      {f.body}
+                    </p>
+                  )}
                   {f.note && (
                     <p className={`${mono} mt-5 text-slate-500`}>{f.note}</p>
                   )}
+                  {f.link && (
+                    <Link
+                      href={linkHref(f.link)}
+                      className="group mt-5 inline-flex items-center gap-1.5 font-mono text-sm text-blue-400 transition-colors hover:text-white"
+                    >
+                      {f.link}
+                      <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                    </Link>
+                  )}
                 </div>
 
+                {hasVisual && (
                 <div className={`rounded-2xl border border-slate-800 bg-slate-950 p-6 ${i % 2 === 1 ? "lg:order-1" : ""}`}>
                   {f.steps && (
                     <ol className="flex flex-col gap-4">
@@ -105,9 +125,11 @@ export default function ProductPageLayout({ data }: { data: ProductPageData }) {
                     </ul>
                   )}
                 </div>
+                )}
               </div>
             </Reveal>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -152,13 +174,15 @@ export default function ProductPageLayout({ data }: { data: ProductPageData }) {
                 Start free
                 <ArrowRight className="transition-all duration-500 ease-in-out group-hover:translate-x-2" />
               </Link>
-              <Link
-                href="/#live-demo"
-                className="flex items-center justify-center gap-2 rounded-full border-2 border-slate-700 p-4 px-6 text-white backdrop-blur-xl transition-all duration-500 ease-in-out hover:border-blue-800 hover:text-blue-800"
-              >
-                <Play className="size-5" />
-                Explore the live product
-              </Link>
+              {data.closeSecondaryLabel && data.closeSecondaryHref && (
+                <Link
+                  href={data.closeSecondaryHref}
+                  className="flex items-center justify-center gap-2 rounded-full border-2 border-slate-700 p-4 px-6 text-white backdrop-blur-xl transition-all duration-500 ease-in-out hover:border-blue-800 hover:text-blue-800"
+                >
+                  <Play className="size-5" />
+                  {data.closeSecondaryLabel}
+                </Link>
+              )}
             </div>
           </div>
         </Reveal>
