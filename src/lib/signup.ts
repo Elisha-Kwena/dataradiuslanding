@@ -141,13 +141,13 @@ export function slugify(name: string) {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "")
-    .slice(0, 30)
+    .slice(0, 63)
     .replace(/-+$/g, "");
 }
 
 export function validateSlug(slug: string): string | null {
   if (slug.length < 3) return "Use at least 3 characters";
-  if (slug.length > 30) return "Use 30 characters or fewer";
+  if (slug.length > 63) return "Use 63 characters or fewer";
   if (!/^[a-z0-9]([a-z0-9-]*[a-z0-9])?$/.test(slug)) return "Use letters, numbers and hyphens, not starting or ending with a hyphen";
   if (RESERVED.includes(slug)) return "That name is reserved";
   return null;

@@ -1,10 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Check } from "lucide-react";
 
 import Logo from "@/components/common/Logo";
+import markWhite from "../../../../public/mark-white.svg";
 import {
   BRAND,
   emptySignup,
@@ -59,7 +61,7 @@ function Stepper({ step }: { step: number }) {
               >
                 {done ? <Check className="size-4" /> : i + 1}
               </span>
-              <span className={`hidden text-sm sm:inline ${current ? "text-white" : done ? "text-slate-300" : "text-slate-600"}`}>
+              <span className={`text-sm ${current ? "text-white" : done ? "text-slate-300" : "text-slate-600"}`}>
                 {s.label}
               </span>
             </div>
@@ -75,36 +77,49 @@ function Stepper({ step }: { step: number }) {
   );
 }
 
-/* --------------------------- marketing panel --------------------------- */
+/* --------------------------- brand panel (left) --------------------------- */
 
-function MarketingPanel() {
+function BrandPanel() {
   return (
-    <div className="relative z-10 flex w-full max-w-md flex-col">
-      <h2 className="font-akhirtahun text-3xl font-extrabold leading-tight tracking-tight">
-        Your workspace is ready in a minute.
-      </h2>
+    <aside className="relative hidden flex-col justify-between overflow-hidden border-r border-white/10 p-10 lg:flex">
+      {/* deep navy wash + brand sector mark texture, no canvas */}
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-[radial-gradient(120%_90%_at_100%_0%,rgba(30,64,175,0.32),transparent_55%),linear-gradient(180deg,#0a0f1e, #05070d)]"
+      />
+      <Image
+        aria-hidden
+        src={markWhite}
+        alt=""
+        className="pointer-events-none absolute -bottom-24 -left-24 size-96 opacity-[0.05]"
+      />
 
-      <ul className="mt-10 flex flex-col gap-3">
+      <div className="relative">
+        <Logo />
+        <h2 className="mt-10 font-akhirtahun text-[28px] font-extrabold leading-snug tracking-tight">
+          Your workspace is ready in a minute.
+        </h2>
+      </div>
+
+      <ul className="relative flex flex-col gap-3.5">
         {FACTS.map((fact) => (
           <li key={fact} className="flex items-start gap-3 text-sm leading-relaxed text-slate-400">
-            <span aria-hidden className="text-slate-600">
-              —
-            </span>
+            <Check aria-hidden className="mt-0.5 size-4 flex-none text-blue-500" />
             {fact}
           </li>
         ))}
       </ul>
 
-      <div className="mt-10 border-t border-white/10 pt-6">
+      <div className="relative border-t border-white/10 pt-6">
         <Link
           href="/status"
-          className="inline-flex items-center gap-2 font-mono text-xs text-slate-400 transition-colors hover:text-white"
+          className="inline-flex items-center gap-2 font-mono text-xs text-slate-500 transition-colors hover:text-white"
         >
           <span aria-hidden className="size-2 rounded-full bg-emerald-500" />
           All systems operational
         </Link>
       </div>
-    </div>
+    </aside>
   );
 }
 
@@ -201,72 +216,77 @@ export default function SignupFlow() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white lg:h-screen lg:overflow-hidden lg:grid lg:grid-cols-2">
-      <div className="flex min-h-screen min-w-0 flex-col px-6 py-8 sm:px-10 lg:min-h-0 lg:h-full lg:overflow-y-auto">
-        <header className="flex items-center justify-between gap-4">
-          <Logo />
-          <p className="text-sm text-slate-400">
-            Have an account?{" "}
-            <Link href="/login" className="text-white underline underline-offset-4 transition-colors hover:text-blue-400">
-              Log in
-            </Link>
-          </p>
-        </header>
+    <div className="relative min-h-screen bg-black text-white lg:flex lg:h-screen lg:items-center lg:justify-center lg:overflow-hidden lg:p-10">
+      {/* page ambience, pure CSS */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(30,64,175,0.14),transparent_55%)]"
+      />
 
-        <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-8 py-10">
-          {!submitted && <Stepper step={step} />}
+      {/* card: full-bleed column on mobile, centered split card on desktop */}
+      <div className="relative grid min-h-screen w-full grid-cols-1 lg:h-[min(700px,94dvh)] lg:min-h-0 lg:max-w-5xl lg:grid-cols-[400px_minmax(0,1fr)] lg:overflow-hidden lg:rounded-3xl lg:border lg:border-white/10 lg:bg-white/[0.02] lg:shadow-2xl lg:shadow-black/60">
+        <BrandPanel />
 
-          <div key={submitted ? "done" : step} className="flex flex-col gap-8 transition duration-500 starting:translate-y-3 starting:opacity-0">
-            <div>
-              <h1 className="font-akhirtahun text-4xl font-extrabold leading-tight">
-                {submitted ? "Check your email" : "Create your workspace"}
-              </h1>
-              <p className="mt-3 font-serif text-slate-400">
-                {submitted
-                  ? `One last step before ${data.slug || "your workspace"}.${BRAND.domain} goes live.`
-                  : "Start managing your network in under a minute."}
-              </p>
+        <div className="flex min-h-screen min-w-0 flex-col px-6 py-8 sm:px-10 lg:h-full lg:min-h-0 lg:overflow-y-auto">
+          <header className="flex items-center justify-between gap-4">
+            <span className="lg:hidden">
+              <Logo />
+            </span>
+            <p className="ml-auto text-sm text-slate-400">
+              Have an account?{" "}
+              <Link href="/login" className="text-white underline underline-offset-4 transition-colors hover:text-blue-400">
+                Log in
+              </Link>
+            </p>
+          </header>
+
+          <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-8 py-10 lg:py-6">
+            {!submitted && <Stepper step={step} />}
+
+            <div key={submitted ? "done" : step} className="flex flex-col gap-7 transition duration-500 starting:translate-y-3 starting:opacity-0">
+              <div>
+                <h1 className="font-akhirtahun text-3xl font-extrabold leading-tight sm:text-4xl">
+                  {submitted ? "Check your email" : "Create your workspace"}
+                </h1>
+                <p className="mt-2.5 font-serif text-[15px] text-slate-400">
+                  {submitted
+                    ? `One last step before ${data.slug || "your workspace"}.${BRAND.domain} goes live.`
+                    : "Start managing your network in under a minute."}
+                </p>
+              </div>
+
+              {submitted ? (
+                <CheckEmailStep
+                  email={data.email}
+                  slug={data.slug}
+                  onResend={() => resendCode(data.email)}
+                  onBack={() => {
+                    setSubmitted(false);
+                    setStep(0);
+                  }}
+                />
+              ) : step === 0 ? (
+                <CredentialsStep data={data} set={set} errors={errors} onNext={nextFromAccount} />
+              ) : (
+                <WorkspaceStep
+                  data={data}
+                  set={set}
+                  errors={errors}
+                  slugStatus={slugStatus}
+                  busy={busy}
+                  formError={formError}
+                  onBack={() => setStep(0)}
+                  onNext={submitWorkspace}
+                />
+              )}
             </div>
+          </main>
 
-            {submitted ? (
-              <CheckEmailStep
-                email={data.email}
-                slug={data.slug}
-                onResend={() => resendCode(data.email)}
-                onBack={() => {
-                  setSubmitted(false);
-                  setStep(0);
-                }}
-              />
-            ) : step === 0 ? (
-              <CredentialsStep data={data} set={set} errors={errors} onNext={nextFromAccount} />
-            ) : (
-              <WorkspaceStep
-                data={data}
-                set={set}
-                errors={errors}
-                slugStatus={slugStatus}
-                busy={busy}
-                formError={formError}
-                onBack={() => setStep(0)}
-                onNext={submitWorkspace}
-              />
-            )}
-          </div>
-        </main>
-
-        <footer className="text-xs text-slate-600">
-          Protected by encryption in transit and at rest. Your data stays yours.
-        </footer>
+          <footer className="text-xs text-slate-600">
+            Protected by encryption in transit and at rest. Your data stays yours.
+          </footer>
+        </div>
       </div>
-
-      <aside className="relative isolate hidden items-center justify-center overflow-hidden border-l border-slate-800 bg-slate-950 p-12 lg:flex">
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(30,64,175,0.18),transparent_60%)]"
-        />
-        <MarketingPanel />
-      </aside>
     </div>
   );
 }

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowLeft, ArrowRight, Check, MailCheck, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, ChevronDown, MailCheck, X } from "lucide-react";
 import {
   BRAND,
   COUNTRIES,
@@ -174,20 +174,23 @@ export function WorkspaceStep({
       </Field>
 
       <Field id="country" label="Country" error={errors.country}>
-        <select
-          id="country"
-          value={data.country}
-          onChange={(e) => set({ country: e.target.value })}
-          aria-invalid={Boolean(errors.country)}
-          aria-describedby="country-note"
-          className={`${inputClass} appearance-none`}
-        >
-          {COUNTRIES.map((c) => (
-            <option key={c.code} value={c.code}>
-              {c.name}
-            </option>
-          ))}
-        </select>
+        <div className="relative">
+          <select
+            id="country"
+            value={data.country}
+            onChange={(e) => set({ country: e.target.value })}
+            aria-invalid={Boolean(errors.country)}
+            aria-describedby="country-note"
+            className={`${inputClass} appearance-none pr-10`}
+          >
+            {COUNTRIES.map((c) => (
+              <option key={c.code} value={c.code}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+          <ChevronDown className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-slate-500" />
+        </div>
       </Field>
 
       <Field
@@ -222,23 +225,26 @@ export function WorkspaceStep({
       </Field>
 
       <Field id="size" label="Subscriber count" error={errors.size}>
-        <select
-          id="size"
-          value={data.size}
-          onChange={(e) => set({ size: e.target.value as SignupData["size"] })}
-          aria-invalid={Boolean(errors.size)}
-          aria-describedby="size-note"
-          className={`${inputClass} appearance-none ${data.size ? "" : "text-slate-600"}`}
-        >
-          <option value="" disabled>
-            How many subscribers do you serve?
-          </option>
-          {SIZE_BANDS.map((b) => (
-            <option key={b.id} value={b.id}>
-              {b.label}
+        <div className="relative">
+          <select
+            id="size"
+            value={data.size}
+            onChange={(e) => set({ size: e.target.value as SignupData["size"] })}
+            aria-invalid={Boolean(errors.size)}
+            aria-describedby="size-note"
+            className={`${inputClass} appearance-none pr-10 ${data.size ? "" : "text-slate-600"}`}
+          >
+            <option value="" disabled>
+              How many subscribers do you serve?
             </option>
-          ))}
-        </select>
+            {SIZE_BANDS.map((b) => (
+              <option key={b.id} value={b.id}>
+                {b.label}
+              </option>
+            ))}
+          </select>
+          <ChevronDown className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-slate-500" />
+        </div>
       </Field>
 
       {formError && (
