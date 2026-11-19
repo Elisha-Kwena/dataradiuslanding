@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { Check, Copy } from "lucide-react";
+import Select from "@/components/ui/Select";
 
 type Layout = "centered" | "split" | "minimal";
 
@@ -140,11 +141,17 @@ export default function HotspotLoginGenerator() {
     <div className="grid gap-6 lg:grid-cols-[1fr_1.2fr]">
       <div className="grid max-h-[560px] content-start gap-5 overflow-y-auto rounded-3xl border border-white/10 bg-white/[0.02] p-6 md:p-8">
         <Field label="Layout">
-          <select className={inputCls} value={inputs.layout} onChange={(e) => set("layout", e.target.value as Layout)}>
-            <option value="centered">Centered card</option>
-            <option value="split">Split: brand left, form right</option>
-            <option value="minimal">Minimal</option>
-          </select>
+          <Select
+            variant="tool"
+            ariaLabel="Layout"
+            value={inputs.layout}
+            onChange={(v) => set("layout", v as Layout)}
+            options={[
+              { value: "centered", label: "Centered card" },
+              { value: "split", label: "Split: brand left, form right" },
+              { value: "minimal", label: "Minimal" },
+            ]}
+          />
         </Field>
         <Field label="Network name">
           <input className={inputCls} value={inputs.networkName} onChange={(e) => set("networkName", e.target.value)} />

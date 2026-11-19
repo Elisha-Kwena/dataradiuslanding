@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Select from "@/components/ui/Select";
 
 // Loss tables ported from dataradius.net (packages/shared optical loss-parameters)
 const GPON_SPECS = {
@@ -86,17 +87,22 @@ export default function FiberPowerBudget() {
       <div className="grid content-start gap-5 rounded-3xl border border-white/10 bg-white/[0.02] p-6 md:p-8">
         <div className="grid grid-cols-2 gap-4">
           <Field label="PON standard">
-            <select className={inputCls} value={pon} onChange={(e) => { const v = e.target.value as "gpon" | "xgspon"; setPon(v); setOdnClass(v === "gpon" ? "b_plus" : "n1"); }}>
-              <option value="gpon">GPON</option>
-              <option value="xgspon">XGS-PON</option>
-            </select>
+            <Select
+              variant="tool"
+              ariaLabel="PON standard"
+              value={pon}
+              onChange={(v) => { const p = v as "gpon" | "xgspon"; setPon(p); setOdnClass(p === "gpon" ? "b_plus" : "n1"); }}
+              options={[{ value: "gpon", label: "GPON" }, { value: "xgspon", label: "XGS-PON" }]}
+            />
           </Field>
           <Field label="ODN class">
-            <select className={inputCls} value={odnClass} onChange={(e) => setOdnClass(e.target.value)}>
-              {Object.entries(specs).map(([k, s]) => (
-                <option key={k} value={k}>{s.label}</option>
-              ))}
-            </select>
+            <Select
+              variant="tool"
+              ariaLabel="ODN class"
+              value={odnClass}
+              onChange={setOdnClass}
+              options={Object.entries(specs).map(([k, s]) => ({ value: k, label: s.label }))}
+            />
           </Field>
         </div>
         <div className="grid grid-cols-2 gap-4">
@@ -104,34 +110,44 @@ export default function FiberPowerBudget() {
             <input className={inputCls} type="number" min={0} step={0.5} value={lengthKm} onChange={(e) => setLengthKm(Math.max(0, Number(e.target.value) || 0))} />
           </Field>
           <Field label="Wavelength (nm)">
-            <select className={inputCls} value={wavelength} onChange={(e) => setWavelength(Number(e.target.value))}>
-              {Object.keys(WAVELENGTH_DB_PER_KM).map((w) => (
-                <option key={w} value={w}>{w} nm: {WAVELENGTH_DB_PER_KM[Number(w)]} dB/km</option>
-              ))}
-            </select>
+            <Select
+              variant="tool"
+              ariaLabel="Wavelength (nm)"
+              value={String(wavelength)}
+              onChange={(v) => setWavelength(Number(v))}
+              options={Object.keys(WAVELENGTH_DB_PER_KM).map((w) => ({ value: w, label: `${w} nm: ${WAVELENGTH_DB_PER_KM[Number(w)]} dB/km` }))}
+            />
           </Field>
         </div>
         <Field label="Splitter ratio">
-          <select className={inputCls} value={splitter} onChange={(e) => setSplitter(Number(e.target.value))}>
-            {Object.keys(SPLITTER_LOSS).map((s) => (
-              <option key={s} value={s}>1:{s}: {SPLITTER_LOSS[Number(s)]} dB</option>
-            ))}
-          </select>
+          <Select
+            variant="tool"
+            ariaLabel="Splitter ratio"
+            value={String(splitter)}
+            onChange={(v) => setSplitter(Number(v))}
+            options={Object.keys(SPLITTER_LOSS).map((s) => ({ value: s, label: `1:${s}: ${SPLITTER_LOSS[Number(s)]} dB` }))}
+          />
         </Field>
         <div className="grid grid-cols-2 gap-4">
           <Field label="Connector pairs">
             <input className={inputCls} type="number" min={0} value={connectors} onChange={(e) => setConnectors(Math.max(0, Number(e.target.value) || 0))} />
           </Field>
           <Field label="Connector type">
-            <select className={inputCls} value={connectorType} onChange={(e) => setConnectorType(e.target.value)}>
-              <option value="sc_apc">SC/APC (0.3 dB)</option>
-              <option value="lc_apc">LC/APC (0.2 dB)</option>
-              <option value="sc_upc">SC/UPC (0.5 dB)</option>
-              <option value="lc_upc">LC/UPC (0.5 dB)</option>
-              <option value="fc_apc">FC/APC (0.3 dB)</option>
-              <option value="fc_upc">FC/UPC (0.5 dB)</option>
-              <option value="field">Field-terminated (0.5 dB)</option>
-            </select>
+            <Select
+              variant="tool"
+              ariaLabel="Connector type"
+              value={connectorType}
+              onChange={setConnectorType}
+              options={[
+                { value: "sc_apc", label: "SC/APC (0.3 dB)" },
+                { value: "lc_apc", label: "LC/APC (0.2 dB)" },
+                { value: "sc_upc", label: "SC/UPC (0.5 dB)" },
+                { value: "lc_upc", label: "LC/UPC (0.5 dB)" },
+                { value: "fc_apc", label: "FC/APC (0.3 dB)" },
+                { value: "fc_upc", label: "FC/UPC (0.5 dB)" },
+                { value: "field", label: "Field-terminated (0.5 dB)" },
+              ]}
+            />
           </Field>
         </div>
         <div className="grid grid-cols-2 gap-4">
@@ -139,10 +155,16 @@ export default function FiberPowerBudget() {
             <input className={inputCls} type="number" min={0} value={splices} onChange={(e) => setSplices(Math.max(0, Number(e.target.value) || 0))} />
           </Field>
           <Field label="Splice type">
-            <select className={inputCls} value={spliceType} onChange={(e) => setSpliceType(e.target.value as keyof typeof SPLICE_LOSS)}>
-              <option value="fusion">Fusion (0.1 dB)</option>
-              <option value="mechanical">Mechanical (0.5 dB)</option>
-            </select>
+            <Select
+              variant="tool"
+              ariaLabel="Splice type"
+              value={spliceType}
+              onChange={(v) => setSpliceType(v as keyof typeof SPLICE_LOSS)}
+              options={[
+                { value: "fusion", label: "Fusion (0.1 dB)" },
+                { value: "mechanical", label: "Mechanical (0.5 dB)" },
+              ]}
+            />
           </Field>
         </div>
         <Field label="Safety margin (dB)">

@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { Money, useRegion } from "@/contexts/PricingContext";
+import Select from "@/components/ui/Select";
 import type { Region } from "@/lib/pricingConfig";
 
 const inputCls =
@@ -67,11 +68,13 @@ export default function RevenueChurnCalculator() {
           <input className={inputCls} type="number" min={0} max={100} step={0.5} value={churnPct} onChange={(e) => setChurnPct(Math.min(100, Math.max(0, Number(e.target.value) || 0)))} />
         </Field>
         <Field label="Projection period">
-          <select className={inputCls} value={months} onChange={(e) => setMonths(Number(e.target.value))}>
-            {[6, 12, 24, 36].map((m) => (
-              <option key={m} value={m}>{m} months</option>
-            ))}
-          </select>
+          <Select
+            variant="tool"
+            ariaLabel="Projection period"
+            value={String(months)}
+            onChange={(v) => setMonths(Number(v))}
+            options={[6, 12, 24, 36].map((m) => ({ value: String(m), label: `${m} months` }))}
+          />
         </Field>
       </div>
 

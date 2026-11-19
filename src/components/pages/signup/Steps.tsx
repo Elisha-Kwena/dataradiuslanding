@@ -16,12 +16,12 @@ import {
   Field,
   PasswordInput,
   PasswordMeter,
-  Select,
   Spinner,
   ghostBtn,
   inputClass,
   primaryBtn,
 } from "@/components/pages/signup/Fields";
+import Select from "@/components/ui/Select";
 
 type Patch = (p: Partial<SignupData>) => void;
 

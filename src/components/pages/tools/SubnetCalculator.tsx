@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Select from "@/components/ui/Select";
 
 function ipToNumber(ip: string): number {
   const parts = ip.split(".").map(Number);
@@ -28,8 +29,6 @@ function isPrivateIp(ip: number): boolean {
 
 const inputCls =
   "h-11 w-full rounded-xl border border-slate-700 bg-black px-3.5 font-mono text-sm text-white focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600";
-const selectCls = inputCls;
-
 function Row({ label, value, mono = true }: { label: string; value: string; mono?: boolean }) {
   return (
     <div className="flex items-center justify-between gap-4 border-b border-slate-800/60 py-2.5 last:border-0">
@@ -98,13 +97,16 @@ export default function SubnetCalculator() {
           <label htmlFor="cidr" className="font-mono text-[11px] uppercase tracking-wider text-slate-500">
             Prefix (CIDR)
           </label>
-          <select id="cidr" className={selectCls} value={cidr} onChange={(e) => setCidr(Number(e.target.value))}>
-            {Array.from({ length: 33 }, (_, i) => (
-              <option key={i} value={i}>
-                /{i}: {Math.pow(2, 32 - i).toLocaleString("en-US")} addresses
-              </option>
-            ))}
-          </select>
+          <Select
+            id="cidr"
+            variant="tool"
+            value={String(cidr)}
+            onChange={(v) => setCidr(Number(v))}
+            options={Array.from({ length: 33 }, (_, i) => ({
+              value: String(i),
+              label: `/${i}: ${Math.pow(2, 32 - i).toLocaleString("en-US")} addresses`,
+            }))}
+          />
         </div>
         <p className="text-xs leading-relaxed text-slate-500">
           Enter any address in the block: the network address is computed for you.

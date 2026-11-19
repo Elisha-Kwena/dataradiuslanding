@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Select from "@/components/ui/Select";
 
 const RATIOS = [5, 10, 15, 20, 25, 30];
 const UPLINKS = [100, 200, 500, 1000, 2000, 5000, 10000];
@@ -65,21 +66,25 @@ export default function OversubscriptionPlanner() {
           <input className={inputCls} type="number" min={1} value={planSpeed} onChange={(e) => setPlanSpeed(Math.max(1, Number(e.target.value) || 1))} />
         </Field>
         <Field label="Oversubscription ratio">
-          <select className={inputCls} value={ratio} onChange={(e) => setRatio(Number(e.target.value))}>
-            {RATIOS.map((x) => (
-              <option key={x} value={x}>{x}:1{x <= 10 ? " (conservative)" : x >= 25 ? " (aggressive)" : ""}</option>
-            ))}
-          </select>
+          <Select
+            variant="tool"
+            ariaLabel="Oversubscription ratio"
+            value={String(ratio)}
+            onChange={(v) => setRatio(Number(v))}
+            options={RATIOS.map((x) => ({ value: String(x), label: `${x}:1${x <= 10 ? " (conservative)" : x >= 25 ? " (aggressive)" : ""}` }))}
+          />
         </Field>
         <Field label="Peak usage: % of subscribers online">
           <input className={inputCls} type="number" min={1} max={100} value={peakPct} onChange={(e) => setPeakPct(Math.min(100, Math.max(1, Number(e.target.value) || 1)))} />
         </Field>
         <Field label="Current uplink capacity">
-          <select className={inputCls} value={uplink} onChange={(e) => setUplink(Number(e.target.value))}>
-            {UPLINKS.map((x) => (
-              <option key={x} value={x}>{formatMbps(x)}</option>
-            ))}
-          </select>
+          <Select
+            variant="tool"
+            ariaLabel="Current uplink capacity"
+            value={String(uplink)}
+            onChange={(v) => setUplink(Number(v))}
+            options={UPLINKS.map((x) => ({ value: String(x), label: formatMbps(x) }))}
+          />
         </Field>
       </div>
 

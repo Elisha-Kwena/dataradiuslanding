@@ -1,3 +1,5 @@
+// Real copy from dataradius.net legal pages (apps/site legal sections).
+
 export type LegalDoc = {
   slug: string;
   title: string;
@@ -8,166 +10,141 @@ export type LegalDoc = {
 export const legalDocs: LegalDoc[] = [
   {
     slug: "terms",
-    title: "Terms of service",
-    updated: "2026-01-15",
-    body: `## 1. The service
+    title: "Terms of Service",
+    updated: "2026-10-10",
+    body: `## Acceptance
 
-DataRadius provides ISP management software: subscriber billing, payment collection, router and hotspot management, fibre mapping and field operations. The service is provided as a workspace at your own subdomain, billed monthly after a 14-day free trial.
+By creating a workspace or using DataRadius, you agree to these terms. If you do not agree, do not use the service.
 
-## 2. Your account
+## The service
 
-You are responsible for everything that happens in your workspace: the data you import, the routers you connect and the people you invite. Keep your credentials confidential. You must be authorized to operate the subscriber data you import.
+DataRadius provides ISP billing, subscriber management, router provisioning and related tools as a hosted service. Your workspace runs on infrastructure managed by DataRadius.
 
-## 3. Billing
+## Your workspace
 
-Paid plans renew monthly. Prices are shown on the pricing page per region and may change with 30 days notice. Non-payment suspends the workspace after a grace period; your data is retained for 90 days and then deleted.
+You are responsible for the activity in your workspace, the accuracy of the data you enter, and the security of your login credentials.
 
-## 4. Acceptable use
+## Payment
 
-You agree to use the service within the law of the countries where you operate and per our [acceptable use policy](/legal/acceptable-use). You remain the provider of record for your subscribers: their service contracts, licenses and obligations are yours.
+Billing is usage-based. Rates are published on the pricing page and may change with 30 days notice. Invoices are issued monthly for the previous month.
 
-## 5. Availability and support
+## Data
 
-We target 99.9% monthly availability for the platform core. Current and historical status is published on the [status page](/status). Support is provided by email and in-workspace chat.
+Your data belongs to you. You may export it at any time in CSV or JSON format. We do not sell, share or use your data for purposes other than providing the service.
 
-## 6. Liability
+## Termination
 
-To the extent the law allows, DataRadius is not liable for indirect losses: lost revenue, lost subscribers or business interruption arising from use of the service. Our total liability is capped at the fees you paid in the preceding 12 months.
+Either party may terminate at any time. On termination, you have 30 days to export your data before it is deleted.
 
-## 7. Termination
+## Liability
 
-Either side can end the agreement at the end of a billing period. On termination we provide a full export of your subscriber and billing data in open formats.
+DataRadius is provided as-is. Our total liability is limited to the fees you paid in the 12 months before the claim.
 
-## 8. Governing law
+## Changes
 
-These terms are governed by the laws of Kenya. Disputes go to the courts of Nairobi unless mandatory law says otherwise.`,
+We may update these terms. Material changes are communicated by email at least 30 days before they take effect.`,
   },
   {
     slug: "privacy",
-    title: "Privacy policy",
-    updated: "2026-01-15",
+    title: "Privacy Policy",
+    updated: "2026-10-10",
     body: `## What we collect
 
-We collect what the service needs to run: your account details (name, email, phone), workspace configuration, the subscriber records you import, router telemetry, and payment metadata. We do not collect subscriber browsing content.
+We collect the information you provide when creating a workspace: name, email address and organisation name. We also collect usage data (page views, feature usage) to improve the service.
 
 ## How we use it
 
-To operate the service: billing your subscribers, connecting routers, delivering notifications and generating your reports. We also use aggregated, de-identified data to improve the product. We do not sell personal data.
+Your data is used to provide and improve the service, send you transactional emails (invoices, alerts), and respond to support requests.
 
-## Your subscribers' data
+## Subscriber data
 
-You are the data controller for your subscribers; DataRadius processes their data on your instructions under our [data processing addendum](/legal/dpa). We handle it per the Kenya Data Protection Act, 2019 and, where it applies, GDPR.
+Subscriber data entered by workspace operators (names, phone numbers, payment records) is stored on behalf of the operator. DataRadius acts as a data processor; the operator is the data controller.
 
-## Sharing
+## Data storage
 
-We share data only with the sub-processors listed on our [sub-processors page](/legal/sub-processors): hosting, payment and messaging providers bound by contract to protect it.
+Data is stored in the EU on encrypted servers. Backups are encrypted and stored separately.
 
-## Retention
+## Third parties
 
-Account data is kept while your workspace is active. After termination, workspace data is retained for 90 days for export and then deleted. Backups cycle out within 30 days after that.
+We share data only with sub-processors listed on the [sub-processors page](/legal/sub-processors). We do not sell personal data.
 
 ## Your rights
 
-You can access, correct, export or delete your account data at any time from workspace settings or by writing to privacy@dataradius.net. Requests are answered within 30 days.
+You may request access to, correction of, or deletion of your personal data by emailing hello@dataradius.net.
 
-## Security
+## Changes
 
-Data is encrypted in transit and at rest, credentials are hashed, and tenant data is isolated per workspace. See [security and trust](/trust) for the full list.`,
+Material changes are communicated by email at least 30 days before they take effect.`,
   },
   {
     slug: "dpa",
-    title: "Data processing addendum",
-    updated: "2026-01-15",
-    body: `## Purpose
+    title: "Data Processing Agreement",
+    updated: "2026-10-10",
+    body: `## Scope
 
-This addendum governs how DataRadius processes personal data on your behalf when you use the service. It forms part of the [terms of service](/legal/terms).
+This Data Processing Agreement applies when a workspace operator (the controller) uses DataRadius (the processor) to process personal data of subscribers.
 
-## Roles
+## Processing
 
-You are the **controller**: you decide what subscriber data goes into the workspace and why. DataRadius is the **processor**: we process that data only on your documented instructions, which the service's features represent.
-
-## What we may do with the data
-
-Store it, transmit it to deliver the features you use, back it up, and produce the reports and notifications you configure. Nothing else. We do not access subscriber records except to operate the service or where you ask us to for support.
+DataRadius processes subscriber data only as instructed by the workspace operator and only to provide the service described in the [terms of service](/legal/terms).
 
 ## Sub-processors
 
-You authorize the sub-processors listed at [sub-processors](/legal/sub-processors). We notify workspace owners before adding a new one, and you may object within 14 days.
+Current sub-processors are listed on the [sub-processors page](/legal/sub-processors). DataRadius notifies the operator at least 30 days before adding a new sub-processor.
 
-## Security measures
+## Security
 
-Encryption in transit and at rest, per-tenant isolation, hashed credentials, access logging and least-privilege internal access. The measures are described at [security and trust](/trust).
+Technical and organisational measures are described on the [security page](/trust): encryption at rest and in transit, workspace isolation, audit logging, role-based access, daily encrypted backups.
 
-## Deletion and export
+## Data location
 
-You can export all personal data held in the workspace at any time. On termination we delete personal data within 90 days, except where the law requires retention.
+Subscriber data is stored in the EU. Transfers outside the EU are covered by Standard Contractual Clauses where required.
 
-## Assistance and audits
+## Deletion
 
-We assist with data-subject requests routed through you, and with regulator enquiries concerning processing under this addendum. Audit requests are handled by written questionnaire; on-site audits by agreement.`,
+On termination, workspace data is deleted within 30 days unless retention is required by law.`,
   },
   {
     slug: "acceptable-use",
-    title: "Acceptable use policy",
-    updated: "2026-01-15",
-    body: `## The short version
+    title: "Acceptable Use Policy",
+    updated: "2026-10-10",
+    body: `## Permitted use
 
-Use DataRadius to run a lawful internet service. Do not use it to harm subscribers, networks or other people.
+DataRadius is for legitimate internet service providers to manage billing, subscribers and network equipment.
 
-## Not allowed
+## Prohibited use
 
-- **Illegal services**: operating internet services without the licenses your jurisdiction requires, or reselling access in breach of your upstream terms.
-- **Abuse tooling**: spam, phishing, malware distribution, botnet control or hosting illegal content through infrastructure you manage with the service.
-- **Privacy violations**: collecting subscriber data beyond what the service needs, intercepting or selling subscriber traffic or browsing data.
-- **Attacks**: probing, scanning or attacking the platform, other workspaces, or third-party networks.
-- **Circumvention**: attempting to bypass tenant isolation, rate limits, access controls or billing.
-- **Impersonation**: presenting the service or generated pages as belonging to another organization.
+You may not use DataRadius to:
+
+- Violate any applicable law or regulation.
+- Infringe on the rights of others.
+- Distribute malware or conduct network attacks.
+- Send unsolicited messages to subscribers.
+- Resell access to the platform without permission.
+- Attempt to access other workspaces or the platform infrastructure.
 
 ## Enforcement
 
-We investigate reports and may suspend a workspace that violates this policy, with notice where the situation allows. Serious violations (fraud, attacks, illegal content) may be suspended immediately and reported to the relevant authorities.
-
-## Reporting abuse
-
-Report abuse originating from a DataRadius-managed service to abuse@dataradius.net. Include the workspace, timestamps and evidence.`,
+DataRadius may suspend or terminate a workspace that violates this policy, with notice where practical.`,
   },
   {
     slug: "sub-processors",
     title: "Sub-processors",
-    updated: "2026-01-15",
-    body: `## What this list is
+    updated: "2026-10-27",
+    body: `DataRadius uses the following third-party services to process data on behalf of workspace operators.
 
-The third parties that may process workspace data while delivering the service, per the [data processing addendum](/legal/dpa). Workspace owners are notified by email at least 14 days before a new sub-processor is added.
-
-## Infrastructure
-
-| Sub-processor | Purpose | Location |
+| Service | Purpose | Location |
 |---|---|---|
-| Cloud hosting provider | Compute, database and storage for workspaces | EU / regional |
-| Content delivery network | Static assets and edge caching | Global |
+| Hetzner | Server hosting and database | EU (Finland) |
+| Cloudflare | CDN, DNS, DDoS protection | Global |
+| Resend | Transactional email delivery | US |
+| Upstash | Cache, queues, pub/sub | EU |
+| Cloudflare R2 | Object storage (uploads, exports) | EU |
 
-## Payments
+## Changes to this list
 
-| Sub-processor | Purpose | Location |
-|---|---|---|
-| Safaricom (M-Pesa Daraja) | Mobile money collections initiated by your subscribers | Kenya |
-| Card payment processor | Card payments where enabled | Varies by region |
+Changes to the sub-processor list are communicated at least 30 days in advance to workspace operators who have signed a data processing agreement.
 
-Payment processors receive only what a transaction needs. Card details never touch DataRadius servers.
-
-## Communications
-
-| Sub-processor | Purpose | Location |
-|---|---|---|
-| Email delivery provider | Transactional email: invoices, alerts, sign-in links | EU / US |
-| SMS gateway | Payment confirmations and alerts you enable | Regional |
-
-## Analytics
-
-Product analytics run on self-hosted infrastructure inside the platform: no third-party analytics sub-processor receives subscriber data.
-
-## Objections
-
-Object to a proposed new sub-processor by writing to privacy@dataradius.net within 14 days of the notice. If we cannot resolve the objection, you may terminate the workspace before the sub-processor takes effect.`,
+Processing terms are described in the [Data Processing Agreement](/legal/dpa).`,
   },
 ];
