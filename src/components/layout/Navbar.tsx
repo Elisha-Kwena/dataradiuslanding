@@ -165,7 +165,7 @@ export default function Navbar(){
                     </div>
                     <div className="hidden lg:flex items-center justify-end gap-3">
                         <ThemeButton />
-                        <Link href="/signup" className="flex items-center justify-center p-2 px-6 rounded-full bg-blue-800 cursor-pointer text-white transition-all duration-500 ease-in-out hover:scale-x-110">
+                        <Link href="/signup" className="flex items-center justify-center p-2 px-6 rounded-full bg-blue-800 cursor-pointer text-white transition-all duration-500 ease-in-out hover:bg-blue-600 hover:shadow-[0_0_24px_-4px_rgba(59,130,246,0.6)]">
                             Start Free
                         </Link>
                     </div>
