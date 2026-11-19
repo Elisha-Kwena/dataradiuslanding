@@ -7,7 +7,7 @@ export default function FinalCTA() {
     <section className="relative w-full overflow-x-clip overflow-y-visible bg-black py-28">
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 -top-32 mx-auto h-72 w-[36rem] max-w-[85%] rounded-full bg-blue-800/20 blur-3xl"
+        className="ambient-glow absolute inset-x-0 -top-32 mx-auto h-72 w-[36rem] max-w-[85%] rounded-full bg-blue-800/20 blur-3xl"
       />
       <div className="relative mx-auto flex w-[90%] max-w-3xl flex-col items-center text-center">
         <Reveal>

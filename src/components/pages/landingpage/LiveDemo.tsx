@@ -72,7 +72,7 @@ export default function LiveDemo() {
       {/* ambient glow */}
       <div
         aria-hidden="true"
-        className="absolute -inset-4 -z-10 rounded-[2rem] bg-blue-600/15 blur-2xl"
+        className="ambient-glow absolute -inset-4 -z-10 rounded-[2rem] bg-blue-600/15 blur-2xl"
       />
       <div
         role="region"

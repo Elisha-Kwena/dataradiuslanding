@@ -104,6 +104,12 @@ html[data-theme="light"] .group\/item:hover .group-hover\/item\:text-white,
   background-color: rgba(37, 99, 235, 0.12);
 }
 
+/* Blurred ambient glows designed for black read as murky smudges on
+   white — fade them to a faint cool wash in light mode. */
+html[data-theme="light"] .ambient-glow {
+  opacity: 0.3;
+}
+
 @theme {
 
   --color-brand: #4C00C7;
