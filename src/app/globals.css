@@ -67,6 +67,16 @@ html[data-theme="light"] .group\/item:hover .group-hover\/item\:text-white,
   background-color: #ffffff;
 }
 
+/* Floating notification cards: crisp white surface with a real shadow */
+.dock-light .bg-slate-800 {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 16px 32px -12px rgba(15, 23, 42, 0.18);
+}
+.dock-light .bg-blue-800\/60 {
+  background-color: rgba(37, 99, 235, 0.12);
+}
+
 @theme {
 
   --color-brand: #4C00C7;
