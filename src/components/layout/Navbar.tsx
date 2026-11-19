@@ -163,10 +163,6 @@ export default function Navbar(){
                         })}
                     </div>
                     <div className="hidden lg:flex items-center justify-end gap-3">
-                        <Link href="/signin" className="flex group items-center justify-center z-100 p-2 px-6 rounded-full border border-blue-800 cursor-pointer text-blue-800 transition-all duration-500 ease-in-out relative overflow-hidden hover:text-white">
-                            <span className="z-100">Signin</span>
-                            <div className="absolute w-40 h-20 z-10 bg-blue-800 right-full group-hover:right-0 transition-all duration-500 ease-in-out"></div>
-                        </Link>
                         <Link href="/signup" className="flex items-center justify-center p-2 px-6 rounded-full bg-blue-800 cursor-pointer text-white transition-all duration-500 ease-in-out hover:scale-x-110">
                             Start Free
                         </Link>
@@ -249,11 +245,8 @@ export default function Navbar(){
                                     {navbtn.label}
                                 </Link>
                             ))}
-                            <div className="mt-2 flex items-center gap-3 border-t border-white/10 pt-3">
-                                <Link href="/signin" onClick={closeAll} className="flex-1 rounded-full border border-blue-800 py-2.5 text-center font-semibold text-blue-500 transition-colors hover:bg-blue-800/10">
-                                    Signin
-                                </Link>
-                                <Link href="/signup" onClick={closeAll} className="flex-1 rounded-full bg-blue-800 py-2.5 text-center font-semibold text-white transition-colors hover:bg-blue-600">
+                            <div className="mt-2 border-t border-white/10 pt-3">
+                                <Link href="/signup" onClick={closeAll} className="block rounded-full bg-blue-800 py-2.5 text-center font-semibold text-white transition-colors hover:bg-blue-600">
                                     Start Free
                                 </Link>
                             </div>

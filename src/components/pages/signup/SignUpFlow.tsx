@@ -184,6 +184,13 @@ export default function SignupFlow() {
     window.scrollTo({ top: 0 });
   }, [step, submitted]);
 
+  // no visible scrollbars anywhere on the auth page
+  useEffect(() => {
+    const el = document.documentElement;
+    el.classList.add("scrollbar-hide");
+    return () => el.classList.remove("scrollbar-hide");
+  }, []);
+
   const nextFromAccount = () => {
     const errs = validateAccount(data);
     setErrors(errs);
@@ -227,28 +234,22 @@ export default function SignupFlow() {
       <div className="relative grid min-h-screen w-full grid-cols-1 lg:h-[min(700px,94dvh)] lg:min-h-0 lg:max-w-5xl lg:grid-cols-[400px_minmax(0,1fr)] lg:overflow-hidden lg:rounded-3xl lg:border lg:border-white/10 lg:bg-white/[0.02] lg:shadow-2xl lg:shadow-black/60">
         <BrandPanel />
 
-        <div className="flex min-h-screen min-w-0 flex-col px-6 py-8 sm:px-10 lg:h-full lg:min-h-0 lg:overflow-y-auto">
+        <div className="scrollbar-hide flex min-h-screen min-w-0 flex-col px-3 py-4 sm:px-4 lg:h-full lg:min-h-0 lg:overflow-y-auto">
           <header className="flex items-center justify-between gap-4">
             <span className="lg:hidden">
               <Logo />
             </span>
-            <p className="ml-auto text-sm text-slate-400">
-              Have an account?{" "}
-              <Link href="/login" className="text-white underline underline-offset-4 transition-colors hover:text-blue-400">
-                Log in
-              </Link>
-            </p>
           </header>
 
-          <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center gap-8 py-10 lg:py-6">
+          <main className="mx-auto flex w-full max-w-lg flex-1 flex-col justify-center gap-6 py-8 lg:py-5">
             {!submitted && <Stepper step={step} />}
 
             <div key={submitted ? "done" : step} className="flex flex-col gap-7 transition duration-500 starting:translate-y-3 starting:opacity-0">
               <div>
-                <h1 className="font-akhirtahun text-3xl font-extrabold leading-tight sm:text-4xl">
+                <h1 className="font-akhirtahun text-3xl font-extrabold leading-tight">
                   {submitted ? "Check your email" : "Create your workspace"}
                 </h1>
-                <p className="mt-2.5 font-serif text-[15px] text-slate-400">
+                <p className="mt-2 font-serif text-[15px] text-slate-400">
                   {submitted
                     ? `One last step before ${data.slug || "your workspace"}.${BRAND.domain} goes live.`
                     : "Start managing your network in under a minute."}
@@ -282,8 +283,8 @@ export default function SignupFlow() {
             </div>
           </main>
 
-          <footer className="text-xs text-slate-600">
-            Protected by encryption in transit and at rest. Your data stays yours.
+          <footer className="text-xs flex items-center gap-2 justify-center text-slate-600">
+            Have a question? <Link href="contact" className="flex font-xtrabold text-white">Contact us</Link>
           </footer>
         </div>
       </div>

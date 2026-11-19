@@ -78,3 +78,13 @@ body {
 ::-webkit-scrollbar-corner {
   background: transparent;
 }
+
+/* Scrollable but visually clean: hides the scrollbar in every engine */
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

@@ -17,6 +17,7 @@ import {
   Field,
   PasswordInput,
   PasswordMeter,
+  Select,
   Spinner,
   ghostBtn,
   inputClass,
@@ -45,7 +46,7 @@ export function CredentialsStep({
         e.preventDefault();
         onNext();
       }}
-      className="flex flex-col gap-6"
+      className="flex flex-col gap-5"
     >
       <Field id="email" label="Email" error={errors.email}>
         <input
@@ -130,48 +131,50 @@ export function WorkspaceStep({
         e.preventDefault();
         onNext();
       }}
-      className="flex flex-col gap-6"
+      className="flex flex-col gap-5"
     >
-      <Field id="business" label="ISP name" error={errors.business}>
-        <input
-          id="business"
-          autoComplete="organization"
-          placeholder="Your ISP or company name"
-          value={data.business}
-          onChange={(e) => set({ business: e.target.value })}
-          aria-invalid={Boolean(errors.business)}
-          aria-describedby="business-note"
-          className={inputClass}
-        />
-      </Field>
-
-      <Field
-        id="slug"
-        label="Workspace address"
-        error={errors.slug}
-        hint={<SlugHint status={slugStatus} />}
-      >
-        <div
-          className={`flex h-12 w-full items-center overflow-hidden rounded-xl border bg-slate-950 transition focus-within:ring-4 ${
-            errors.slug
-              ? "border-red-600 focus-within:ring-red-600/20"
-              : "border-slate-700 focus-within:border-blue-700 focus-within:ring-blue-800/30"
-          }`}
-        >
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <Field id="business" label="ISP name" error={errors.business}>
           <input
-            id="slug"
-            autoComplete="off"
-            spellCheck={false}
-            placeholder="your-company"
-            value={data.slug}
-            onChange={(e) => set({ slug: e.target.value.toLowerCase(), slugEdited: true })}
-            aria-invalid={Boolean(errors.slug)}
-            aria-describedby="slug-note"
-            className="h-full min-w-0 flex-1 bg-transparent px-4 text-white placeholder:text-slate-600 focus:outline-none"
+            id="business"
+            autoComplete="organization"
+            placeholder="Your ISP or company name"
+            value={data.business}
+            onChange={(e) => set({ business: e.target.value })}
+            aria-invalid={Boolean(errors.business)}
+            aria-describedby="business-note"
+            className={inputClass}
           />
-          <span className="pr-4 font-mono text-sm text-slate-500">.{BRAND.domain}</span>
-        </div>
-      </Field>
+        </Field>
+
+        <Field
+          id="slug"
+          label="Workspace address"
+          error={errors.slug}
+          hint={<SlugHint status={slugStatus} />}
+        >
+          <div
+            className={`flex h-12 w-full items-center overflow-hidden rounded-xl border bg-slate-950 transition focus-within:ring-4 ${
+              errors.slug
+                ? "border-red-600 focus-within:ring-red-600/20"
+                : "border-slate-700 focus-within:border-blue-700 focus-within:ring-blue-800/30"
+            }`}
+          >
+            <input
+              id="slug"
+              autoComplete="off"
+              spellCheck={false}
+              placeholder="your-company"
+              value={data.slug}
+              onChange={(e) => set({ slug: e.target.value.toLowerCase(), slugEdited: true })}
+              aria-invalid={Boolean(errors.slug)}
+              aria-describedby="slug-note"
+              className="h-full min-w-0 flex-1 bg-transparent px-3.5 text-white placeholder:text-slate-600 focus:outline-none"
+            />
+            <span className="pr-3.5 font-mono text-sm text-slate-500">.{BRAND.domain}</span>
+          </div>
+        </Field>
+      </div>
 
       <Field id="country" label="Country" error={errors.country}>
         <div className="relative">
@@ -206,7 +209,7 @@ export function WorkspaceStep({
               : "border-slate-700 focus-within:border-blue-700 focus-within:ring-blue-800/30"
           }`}
         >
-          <span className="border-r border-slate-800 px-4 font-mono text-sm text-slate-400">
+          <span className="border-r border-slate-800 px-3.5 font-mono text-sm text-slate-400">
             {phoneCode}
           </span>
           <input
@@ -219,32 +222,20 @@ export function WorkspaceStep({
             onChange={(e) => set({ phone: e.target.value })}
             aria-invalid={Boolean(errors.phone)}
             aria-describedby="phone-note"
-            className="h-full min-w-0 flex-1 bg-transparent px-4 text-white placeholder:text-slate-600 focus:outline-none"
+            className="h-full min-w-0 flex-1 bg-transparent px-3.5 text-white placeholder:text-slate-600 focus:outline-none"
           />
         </div>
       </Field>
 
       <Field id="size" label="Subscriber count" error={errors.size}>
-        <div className="relative">
-          <select
-            id="size"
-            value={data.size}
-            onChange={(e) => set({ size: e.target.value as SignupData["size"] })}
-            aria-invalid={Boolean(errors.size)}
-            aria-describedby="size-note"
-            className={`${inputClass} appearance-none pr-10 ${data.size ? "" : "text-slate-600"}`}
-          >
-            <option value="" disabled>
-              How many subscribers do you serve?
-            </option>
-            {SIZE_BANDS.map((b) => (
-              <option key={b.id} value={b.id}>
-                {b.label}
-              </option>
-            ))}
-          </select>
-          <ChevronDown className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-slate-500" />
-        </div>
+        <Select
+          id="size"
+          value={data.size}
+          onChange={(v) => set({ size: v as SignupData["size"] })}
+          options={SIZE_BANDS.map((b) => ({ value: b.id, label: b.label }))}
+          placeholder="How many subscribers do you serve?"
+          invalid={Boolean(errors.size)}
+        />
       </Field>
 
       {formError && (
