@@ -26,7 +26,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-       className={`${geistSans.variable} ${geistMono.variable} ${akhirTahun.variable} ${autobusOmnibus.variable} ${superShiny.variable} ${ibmblockserif.variable} ${earlybird.variable} ${anton.variable} h-full antialiased`}>
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable} ${akhirTahun.variable} ${autobusOmnibus.variable} ${superShiny.variable} ${ibmblockserif.variable} ${earlybird.variable} ${anton.variable} h-full antialiased`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{document.documentElement.dataset.theme=localStorage.getItem("theme")||"dark"}catch(e){document.documentElement.dataset.theme="dark"}`,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col font-serif">
         <CurrencyProvider>{children}</CurrencyProvider>
         </body>
