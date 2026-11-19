@@ -108,6 +108,11 @@ export default function Navbar(){
         }
     }, [])
 
+    useEffect(() => {
+        document.body.style.overflow = mobileOpen ? "hidden" : ""
+        return () => { document.body.style.overflow = "" }
+    }, [mobileOpen])
+
     const closeAll = () => {
         setOpenMenu(null)
         setHoveredMenu(null)
