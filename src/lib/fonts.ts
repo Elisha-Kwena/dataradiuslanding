@@ -1,6 +1,18 @@
 import localFont from 'next/font/local';
 
 
+export const anton = localFont({
+  src: [
+    {
+      path: '../../public/fonts/Anton-Regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-anton-variable',
+  display: 'swap',
+});
+
 export const oblisk = localFont({
   src:[
     {
@@ -76,6 +88,7 @@ export const ibmblockserif = localFont({
 
 
 export const fonts = {
+  anton,
   akhirTahun,
   autobusOmnibus,
   superShiny,

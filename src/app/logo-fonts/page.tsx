@@ -1,5 +1,5 @@
 const FONTS = [
-  { class: "font-fantasy", label: "font-fantasy (current: OBLISK)" },
+  { class: "font-fantasy", label: "font-fantasy (Anton: the Impact-style face)" },
   { class: "font-supershiny", label: "font-supershiny" },
   { class: "font-autobus", label: "font-autobus" },
   { class: "font-earlybird", label: "font-earlybird" },
