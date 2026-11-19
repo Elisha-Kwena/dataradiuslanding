@@ -4,10 +4,10 @@ import Reveal from "@/components/ui/Reveal";
 
 export default function FinalCTA() {
   return (
-    <section className="relative w-full overflow-hidden bg-black py-28">
+    <section className="relative w-full overflow-x-clip overflow-y-visible bg-black py-28">
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-[28rem] bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(30,64,175,0.22),transparent_70%)]"
+        className="absolute inset-x-0 -top-32 mx-auto h-72 w-[36rem] max-w-[85%] rounded-full bg-blue-800/20 blur-3xl"
       />
       <div className="relative mx-auto flex w-[90%] max-w-3xl flex-col items-center text-center">
         <Reveal>
