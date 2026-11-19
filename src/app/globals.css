@@ -11,8 +11,11 @@ html {
 
 /* Light theme: invert the neutral palette. Utilities like bg-black /
    text-white / border-slate-800 all resolve through these vars, so
-   remapping them re-skins the whole site without touching components. */
-html[data-theme="light"] {
+   remapping them re-skins the whole site without touching components.
+   .dock-light applies the same remap to the dashboard demo subtree only,
+   letting it toggle independently of the page theme. */
+html[data-theme="light"],
+.dock-light {
   color-scheme: light;
   --background: #ffffff;
   --foreground: #0a0a0a;
@@ -49,8 +52,19 @@ html[data-theme="light"] .bg-blue-800,
 html[data-theme="light"] .bg-blue-800 .text-white,
 html[data-theme="light"] .hover\:bg-blue-800:hover:is(.text-white, .hover\:text-white),
 html[data-theme="light"] .group:hover .group-hover\:bg-blue-800:is(.text-white, .group-hover\:text-white),
-html[data-theme="light"] .group\/item:hover .group-hover\/item\:text-white {
+html[data-theme="light"] .group\/item:hover .group-hover\/item\:text-white,
+.dock-light .bg-blue-800,
+.dock-light .bg-blue-800 .text-white {
   color: #ffffff;
+}
+
+/* Dashboard demo light mode: white cards, buttons and bars on gray-100. */
+.dock-light {
+  color: #0a0a0a;
+}
+.dock-light .border-slate-700,
+.dock-light .border-slate-800 {
+  background-color: #ffffff;
 }
 
 @theme {

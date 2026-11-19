@@ -33,7 +33,9 @@ import {
   ArrowUp,
   Check,
   Zap,
-  Wrench
+  Wrench,
+  Sun,
+  Moon
 } from "lucide-react";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
@@ -339,6 +341,9 @@ export default function DashBoard(){
     const [activities,setActivities] = useState<ActivityItem[]>(seedActivities)
     const nextId = useRef(100)
 
+    // dashboard-local theme: independent of the marketing page theme
+    const [dockLight,setDockLight] = useState(false)
+
     // keep the "x ago" labels moving
     useEffect(()=>{
         const clock = setInterval(()=>{
@@ -418,7 +423,7 @@ export default function DashBoard(){
     const growth = Math.min(100, ((today - yesterdaySoFar)/yesterdaySoFar)*100)
 
     return(
-        <div className="relative w-[95%] md:w-3/4 h-[80vh] md:h-[95vh] overflow-y-clip bg-black flex flex-col rounded-tr-xl rounded-tl-xl border-t border-l border-r rounded-bl-0 border-slate-700">
+        <div className={`relative w-[95%] md:w-3/4 h-[80vh] md:h-[95vh] overflow-y-clip flex flex-col rounded-tr-xl rounded-tl-xl border-t border-l border-r rounded-bl-0 border-slate-700 ${dockLight ? "dock-light bg-[#f3f4f6]" : "bg-black"}`}>
 
             {/* floating cards */}
             <FloatingCard show={showPay} icon={Check} title={pay.title} sub={pay.sub} className="-right-2 md:-right-8 top-16"/>
@@ -517,6 +522,14 @@ export default function DashBoard(){
                         <div className="w-7 h-7 flex items-center justify-center">
                             <Settings className="text-gray-500"/>
                         </div>
+                        <button
+                            type="button"
+                            onClick={()=>setDockLight((v)=>!v)}
+                            aria-label="Toggle dashboard theme"
+                            className="w-7 h-7 flex items-center justify-center rounded-md cursor-pointer transition-colors hover:bg-white/10"
+                        >
+                            {dockLight ? <Moon className="size-4 text-gray-500"/> : <Sun className="size-4 text-gray-500"/>}
+                        </button>
                         <div className="w-7 h-7 flex items-center justify-center relative">
                             <Bell className="text-gray-500"/>
                             <div className="absolute w-2 h-2 rounded-full bg-red-600 top-0 right-1"></div>

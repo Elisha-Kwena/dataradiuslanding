@@ -126,7 +126,7 @@ export default function Navbar(){
         <header ref={headerRef} className="fixed z-999999 inset-x-0 top-0 flex items-start justify-center px-[4%] pt-4">
             <nav
                 onMouseLeave={() => setHoveredMenu(null)}
-                className={`w-full lg:w-[80%] rounded-3xl border border-white/15 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_16px_40px_-12px_rgba(0,0,0,0.6)] backdrop-blur-2xl backdrop-saturate-150 transition-colors duration-300 ${expanded ? "bg-white/[0.08]" : "bg-white/[0.04]"}`}
+                className={`w-full lg:w-[80%] rounded-3xl shadow-[0_2px_12px_-6px_rgba(0,0,0,0.25)] backdrop-blur-2xl backdrop-saturate-150 transition-colors duration-300 ${expanded ? "bg-white/8" : "bg-white/4"}`}
             >
                 {/* top row */}
                 <div className="flex items-center justify-between p-2 pl-4">
