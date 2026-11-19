@@ -13,18 +13,6 @@ export const anton = localFont({
   display: 'swap',
 });
 
-export const oblisk = localFont({
-  src:[
-    {
-      path:"../../public/fonts/OBLISK.otf",
-      weight:'400',
-      style:'normal'
-    },
-    
-  ],
-  variable:"--font-oblisk-variable",
-  display:"swap"
-})
 export const akhirTahun = localFont({
   src: [
     {

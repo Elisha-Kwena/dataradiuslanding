@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { akhirTahun, autobusOmnibus, superShiny, earlybird, ibmblockserif, oblisk, anton } from '../lib/fonts';
+import { akhirTahun, autobusOmnibus, superShiny, earlybird, ibmblockserif, anton } from '../lib/fonts';
 import "./globals.css";
 
 import Navbar from "@/components/layout/Navbar";
@@ -28,7 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-       className={`${geistSans.variable} ${geistMono.variable} ${akhirTahun.variable} ${autobusOmnibus.variable} ${oblisk.variable} ${superShiny.variable} ${ibmblockserif.variable} ${earlybird.variable} ${anton.variable} h-full antialiased`}>
+       className={`${geistSans.variable} ${geistMono.variable} ${akhirTahun.variable} ${autobusOmnibus.variable} ${superShiny.variable} ${ibmblockserif.variable} ${earlybird.variable} ${anton.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-serif">
         <CurrencyProvider>
           <Navbar />
