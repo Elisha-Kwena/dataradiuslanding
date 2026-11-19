@@ -47,19 +47,20 @@ export default function SwitchSection() {
         </Reveal>
 
         <Reveal delay={300}>
-          <div className="mt-14 flex flex-wrap items-center justify-center gap-6">
+          <div className="mt-14 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/switch"
-              className="rounded-lg border border-white/15 px-6 py-3 text-sm font-medium text-white transition-colors hover:border-blue-800 hover:text-blue-400"
+              className="group flex items-center justify-center gap-3 rounded-full bg-white p-4 px-8 text-black transition-all duration-500 ease-in-out hover:bg-blue-800 hover:text-white"
             >
               Plan my move
+              <ArrowRight className="transition-all duration-500 ease-in-out group-hover:translate-x-2" />
             </Link>
             <Link
               href="/switch"
-              className="group flex items-center gap-1.5 text-sm font-medium text-slate-400 transition-colors hover:text-white"
+              className="group flex items-center justify-center gap-2 rounded-full border-2 border-slate-700 p-4 px-8 text-white transition-all duration-500 ease-in-out hover:border-blue-800 hover:text-blue-400"
             >
               How switching works
-              <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight className="size-4 transition-transform duration-500 ease-in-out group-hover:translate-x-1" />
             </Link>
           </div>
         </Reveal>
