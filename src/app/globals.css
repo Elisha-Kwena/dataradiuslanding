@@ -16,6 +16,7 @@
   --font-supershiny: var(--font-supershiny-variable);
   --font-earlybird: var(--font-earlybird-variable);
   --font-ibmblockserif: var(--font-ibmblockserif-variable);
+  --font-fantasy: var(--font-oblisk-variable), fantasy;
 
   /* Set Cambria as the default sans font */
   --font-sans: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
