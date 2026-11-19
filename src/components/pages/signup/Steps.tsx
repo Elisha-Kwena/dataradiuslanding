@@ -8,7 +8,6 @@ import {
   COUNTRIES,
   SIZE_BANDS,
   getCountry,
-  isDemo,
   type Errors,
   type SignupData,
   type SlugStatus,
@@ -258,12 +257,6 @@ export function WorkspaceStep({
           )}
         </button>
       </div>
-
-      {isDemo && (
-        <p className="text-center text-xs text-slate-600">
-          Demo mode: no account is created and nothing leaves your browser.
-        </p>
-      )}
     </form>
   );
 }

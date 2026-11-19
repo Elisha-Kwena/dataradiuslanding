@@ -81,7 +81,7 @@ function Stepper({ step }: { step: number }) {
 
 function BrandPanel() {
   return (
-    <aside className="relative hidden flex-col justify-between overflow-hidden border-r border-white/10 p-10 lg:flex">
+    <aside className="relative hidden flex-col justify-between overflow-hidden p-10 lg:flex">
       {/* deep navy wash + brand sector mark texture, no canvas */}
       <div
         aria-hidden
@@ -110,7 +110,7 @@ function BrandPanel() {
         ))}
       </ul>
 
-      <div className="relative border-t border-white/10 pt-6">
+      <div className="relative pt-6">
         <Link
           href="/status"
           className="inline-flex items-center gap-2 font-mono text-xs text-slate-500 transition-colors hover:text-white"
@@ -186,9 +186,9 @@ export default function SignupFlow() {
 
   // no visible scrollbars anywhere on the auth page
   useEffect(() => {
-    const el = document.documentElement;
-    el.classList.add("scrollbar-hide");
-    return () => el.classList.remove("scrollbar-hide");
+    const els = [document.documentElement, document.body];
+    els.forEach((el) => el.classList.add("scrollbar-hide"));
+    return () => els.forEach((el) => el.classList.remove("scrollbar-hide"));
   }, []);
 
   const nextFromAccount = () => {
