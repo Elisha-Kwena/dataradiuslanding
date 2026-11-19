@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowLeft, ArrowRight, Check, ChevronDown, MailCheck, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, MailCheck, X } from "lucide-react";
 import {
   BRAND,
   COUNTRIES,
@@ -152,47 +152,28 @@ export function WorkspaceStep({
           error={errors.slug}
           hint={<SlugHint status={slugStatus} />}
         >
-          <div
-            className={`flex h-12 w-full items-center overflow-hidden rounded-xl border bg-slate-950 transition focus-within:ring-4 ${
-              errors.slug
-                ? "border-red-600 focus-within:ring-red-600/20"
-                : "border-slate-700 focus-within:border-blue-700 focus-within:ring-blue-800/30"
-            }`}
-          >
-            <input
-              id="slug"
-              autoComplete="off"
-              spellCheck={false}
-              placeholder="your-company"
-              value={data.slug}
-              onChange={(e) => set({ slug: e.target.value.toLowerCase(), slugEdited: true })}
-              aria-invalid={Boolean(errors.slug)}
-              aria-describedby="slug-note"
-              className="h-full min-w-0 flex-1 bg-transparent px-3.5 text-white placeholder:text-slate-600 focus:outline-none"
-            />
-            <span className="pr-3.5 font-mono text-sm text-slate-500">.{BRAND.domain}</span>
-          </div>
+          <input
+            id="slug"
+            autoComplete="off"
+            spellCheck={false}
+            placeholder="your-company"
+            value={data.slug}
+            onChange={(e) => set({ slug: e.target.value.toLowerCase(), slugEdited: true })}
+            aria-invalid={Boolean(errors.slug)}
+            aria-describedby="slug-note"
+            className={inputClass}
+          />
         </Field>
       </div>
 
       <Field id="country" label="Country" error={errors.country}>
-        <div className="relative">
-          <select
-            id="country"
-            value={data.country}
-            onChange={(e) => set({ country: e.target.value })}
-            aria-invalid={Boolean(errors.country)}
-            aria-describedby="country-note"
-            className={`${inputClass} appearance-none pr-10`}
-          >
-            {COUNTRIES.map((c) => (
-              <option key={c.code} value={c.code}>
-                {c.name}
-              </option>
-            ))}
-          </select>
-          <ChevronDown className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-slate-500" />
-        </div>
+        <Select
+          id="country"
+          value={data.country}
+          onChange={(v) => set({ country: v })}
+          options={COUNTRIES.map((c) => ({ value: c.code, label: c.name }))}
+          invalid={Boolean(errors.country)}
+        />
       </Field>
 
       <Field
