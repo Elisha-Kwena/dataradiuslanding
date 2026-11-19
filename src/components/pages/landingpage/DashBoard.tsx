@@ -429,7 +429,7 @@ export default function DashBoard(){
             <FloatingCard show={showPay} icon={Check} title={pay.title} sub={pay.sub} className="-right-2 md:-right-8 top-16"/>
             <FloatingCard show={showSession} icon={Wifi} title={session.title} sub={session.sub} className="-left-2 md:-left-8 bottom-24"/>
 
-            <div className="w-full flex items-center justify-start gap-3 p-4 py-2.5 border-b border-slate-700">
+            <div className="w-full flex items-center justify-start gap-3 rounded-tr-xl rounded-tl-xl p-4 py-2.5 border-b border-slate-700">
                 <div className="flex items-center justify-start gap-2 ">
                     {controls.map((control,index)=>(
                         <div key={index} className={`w-4 h-4 rounded-full ${control.background}`}></div>
