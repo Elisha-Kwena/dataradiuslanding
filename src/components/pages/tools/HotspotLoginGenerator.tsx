@@ -38,6 +38,26 @@ const inputCls =
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
+/** Injected into the generated page so the portal scrolls nicely on the
+ *  router too, and so the preview iframe doesn't show OS scrollbars. */
+const scrollbarCss = `<style>
+  html{scrollbar-width:thin;scrollbar-color:rgba(128,128,128,.55) transparent}
+  ::-webkit-scrollbar{width:8px;height:8px}
+  ::-webkit-scrollbar-track{background:transparent}
+  ::-webkit-scrollbar-thumb{background:rgba(128,128,128,.55);border-radius:8px}
+  ::-webkit-scrollbar-thumb:hover{background:rgba(128,128,128,.8)}
+</style>`;
+
+/** Simulate what RouterOS renders on first page load: no error, empty
+ *  username, links as placeholders. The real variables stay in the output. */
+function toPreview(html: string): string {
+  return html
+    .replace(/\$\(if error\)[\s\S]*?\$\(endif\)/g, "")
+    .replace(/\$\(link-[a-z-]+\)/g, "#")
+    .replace(/\$\((username|password)\)/g, "")
+    .replace(/\$\([^)]*\)/g, "");
+}
+
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-1.5">
@@ -66,7 +86,7 @@ function generateHtml(i: Inputs): string {
 
   if (i.layout === "split") {
     return `<!DOCTYPE html>
-<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(i.networkName)}: Wi-Fi</title></head>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(i.networkName)}: Wi-Fi</title>${scrollbarCss}</head>
 <body style="margin:0;font-family:-apple-system,system-ui,sans-serif;min-height:100vh;display:flex">
   <div style="flex:1;background:${esc(i.primaryColor)};display:flex;align-items:center;justify-content:center;color:#fff;padding:40px">
     <div style="text-align:center">
@@ -89,7 +109,7 @@ function generateHtml(i: Inputs): string {
       ? `<div style="width:100%;max-width:360px;text-align:center">`
       : `<div style="width:100%;max-width:380px;background:rgba(255,255,255,.04);border:1px solid rgba(128,128,128,.25);border-radius:16px;padding:32px;text-align:center">`;
   return `<!DOCTYPE html>
-<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(i.networkName)}: Wi-Fi</title></head>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(i.networkName)}: Wi-Fi</title>${scrollbarCss}</head>
 <body style="margin:0;font-family:-apple-system,system-ui,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;background:${esc(i.backgroundColor)};color:${esc(i.textColor)};padding:24px">
   ${card}
     ${logo}
@@ -105,6 +125,7 @@ export default function HotspotLoginGenerator() {
   const [inputs, setInputs] = useState<Inputs>(DEFAULTS);
   const [copied, setCopied] = useState(false);
   const html = useMemo(() => generateHtml(inputs), [inputs]);
+  const preview = useMemo(() => toPreview(html), [html]);
 
   const set = <K extends keyof Inputs>(k: K, v: Inputs[K]) =>
     setInputs((s) => ({ ...s, [k]: v }));
@@ -170,7 +191,9 @@ export default function HotspotLoginGenerator() {
       <div className="flex min-w-0 flex-col gap-6">
         <div className="overflow-hidden rounded-3xl border border-slate-800">
           <div className="flex items-center justify-between border-b border-white/10 bg-white/[0.02] px-5 py-3">
-            <p className="font-mono text-[11px] uppercase tracking-wider text-slate-500">Live preview</p>
+            <p className="font-mono text-[11px] uppercase tracking-wider text-slate-500">
+              Live preview <span className="normal-case tracking-normal">(first load, no error)</span>
+            </p>
             <button
               type="button"
               onClick={copy}
@@ -182,7 +205,7 @@ export default function HotspotLoginGenerator() {
           </div>
           <iframe
             title="Hotspot login page preview"
-            srcDoc={html}
+            srcDoc={preview}
             sandbox=""
             className="h-[340px] w-full bg-white"
           />
