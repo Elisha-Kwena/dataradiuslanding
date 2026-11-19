@@ -58,6 +58,33 @@ html[data-theme="light"] .group\/item:hover .group-hover\/item\:text-white,
   color: #ffffff;
 }
 
+/* Dashboard demo dark mode: pins the ORIGINAL palette inside the widget
+   so the page-level light theme cannot wash it out. The dashboard theme
+   is independent — .dock-dark always wins over html[data-theme] vars. */
+.dock-dark {
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+  --color-slate-950: #020617;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-600: #4b5563;
+  --color-blue-300: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  color: #ededed;
+}
+
 /* Dashboard demo light mode: white cards, buttons and bars on gray-100. */
 .dock-light {
   color: #0a0a0a;

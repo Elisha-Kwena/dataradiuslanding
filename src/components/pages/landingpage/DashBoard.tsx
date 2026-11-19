@@ -423,7 +423,7 @@ export default function DashBoard(){
     const growth = Math.min(100, ((today - yesterdaySoFar)/yesterdaySoFar)*100)
 
     return(
-        <div className={`relative w-[95%] md:w-3/4 h-[80vh] md:h-[95vh] overflow-y-clip flex flex-col rounded-tr-xl rounded-tl-xl border-t border-l border-r rounded-bl-0 border-slate-700 ${dockLight ? "dock-light bg-[#f3f4f6]" : "bg-black"}`}>
+        <div className={`relative w-[95%] md:w-3/4 h-[80vh] md:h-[95vh] overflow-y-clip flex flex-col rounded-tr-xl rounded-tl-xl border-t border-l border-r rounded-bl-0 border-slate-700 ${dockLight ? "dock-light bg-[#f3f4f6]" : "dock-dark bg-black"}`}>
 
             {/* floating cards */}
             <FloatingCard show={showPay} icon={Check} title={pay.title} sub={pay.sub} className="-right-2 md:-right-8 top-16"/>
