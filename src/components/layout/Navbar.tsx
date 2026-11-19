@@ -1,6 +1,7 @@
 "use client"
 
 import Logo from "../common/Logo"
+import ThemeButton from "./ThemeButton"
 import Link from "next/link"
 import { useEffect, useRef, useState, type ReactNode } from "react"
 import { navlinks, resources, type NavLink } from "@/lib/navData"
@@ -163,19 +164,23 @@ export default function Navbar(){
                         })}
                     </div>
                     <div className="hidden lg:flex items-center justify-end gap-3">
+                        <ThemeButton />
                         <Link href="/signup" className="flex items-center justify-center p-2 px-6 rounded-full bg-blue-800 cursor-pointer text-white transition-all duration-500 ease-in-out hover:scale-x-110">
                             Start Free
                         </Link>
                     </div>
-                    <button
-                        type="button"
-                        onClick={() => setMobileOpen((o) => !o)}
-                        aria-expanded={mobileOpen}
-                        aria-label={mobileOpen ? "Close menu" : "Open menu"}
-                        className="flex lg:hidden size-10 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-blue-800"
-                    >
-                        {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
-                    </button>
+                    <div className="flex items-center gap-2 lg:hidden">
+                        <ThemeButton />
+                        <button
+                            type="button"
+                            onClick={() => setMobileOpen((o) => !o)}
+                            aria-expanded={mobileOpen}
+                            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+                            className="flex size-10 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-blue-800"
+                        >
+                            {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+                        </button>
+                    </div>
                 </div>
 
                 {/* expanding panel: whole navbar grows in height */}
