@@ -11,8 +11,11 @@ html {
 
 /* Light theme: invert the neutral palette. Utilities like bg-black /
    text-white / border-slate-800 all resolve through these vars, so
-   remapping them re-skins the whole site without touching components. */
-html[data-theme="light"] {
+   remapping them re-skins the whole site without touching components.
+   .dock-light applies the same remap to the dashboard demo subtree only,
+   letting it toggle independently of the page theme. */
+html[data-theme="light"],
+.dock-light {
   color-scheme: light;
   --background: #ffffff;
   --foreground: #0a0a0a;
@@ -49,26 +52,55 @@ html[data-theme="light"] .bg-blue-800,
 html[data-theme="light"] .bg-blue-800 .text-white,
 html[data-theme="light"] .hover\:bg-blue-800:hover:is(.text-white, .hover\:text-white),
 html[data-theme="light"] .group:hover .group-hover\:bg-blue-800:is(.text-white, .group-hover\:text-white),
-html[data-theme="light"] .group\/item:hover .group-hover\/item\:text-white {
+html[data-theme="light"] .group\/item:hover .group-hover\/item\:text-white,
+.dock-light .bg-blue-800,
+.dock-light .bg-blue-800 .text-white {
   color: #ffffff;
 }
 
-/* Dashboard demo in light mode: gray-100 surface, white cards/buttons. */
-html[data-theme="light"] .dash {
-  background-color: #f3f4f6;
+/* Dashboard demo dark mode: pins the ORIGINAL palette inside the widget
+   so the page-level light theme cannot wash it out. The dashboard theme
+   is independent — .dock-dark always wins over html[data-theme] vars. */
+.dock-dark {
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+  --color-slate-950: #020617;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-600: #4b5563;
+  --color-blue-300: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  color: #ededed;
 }
-html[data-theme="light"] .dash .border-slate-700,
-html[data-theme="light"] .dash .border-slate-800 {
+
+/* Dashboard demo light mode: white cards, buttons and bars on gray-100. */
+.dock-light {
+  color: #0a0a0a;
+}
+.dock-light .border-slate-700,
+.dock-light .border-slate-800 {
   background-color: #ffffff;
 }
 
 /* Floating notification cards: crisp white surface with a real shadow */
-html[data-theme="light"] .dash .bg-slate-800 {
+.dock-light .bg-slate-800 {
   background-color: #ffffff;
   border-color: #e2e8f0;
   box-shadow: 0 16px 32px -12px rgba(15, 23, 42, 0.18);
 }
-html[data-theme="light"] .dash .bg-blue-800\/60 {
+.dock-light .bg-blue-800\/60 {
   background-color: rgba(37, 99, 235, 0.12);
 }
 
