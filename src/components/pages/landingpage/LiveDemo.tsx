@@ -77,7 +77,7 @@ export default function LiveDemo() {
       <div
         role="region"
         aria-label="Live demo network simulation"
-        className="live-demo-card w-full rounded-2xl border border-white/10 bg-linear-to-b from-white/[0.07] to-white/[0.02] p-5 shadow-2xl backdrop-blur-xl sm:p-6"
+        className="live-demo-card w-full rounded-2xl border border-white/10  p-5  backdrop-blur-xl sm:p-6"
       >
         {/* header */}
         <div className="flex items-center justify-between">
