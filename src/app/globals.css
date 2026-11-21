@@ -110,6 +110,16 @@ html[data-theme="light"] .ambient-glow {
   opacity: 0.3;
 }
 
+/* The live-demo card uses a dark-page shadow, which feels heavy on white.
+   Remove both the card shadow and its ambient halo in light mode. */
+html[data-theme="light"] .live-demo-card {
+  box-shadow: none;
+}
+
+html[data-theme="light"] .live-demo-ambient {
+  opacity: 0;
+}
+
 @theme {
 
   --color-brand: #4C00C7;

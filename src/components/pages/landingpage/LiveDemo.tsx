@@ -72,12 +72,12 @@ export default function LiveDemo() {
       {/* ambient glow */}
       <div
         aria-hidden="true"
-        className="ambient-glow absolute -inset-4 -z-10 rounded-[2rem] bg-blue-600/15 blur-2xl"
+        className="live-demo-ambient ambient-glow absolute -inset-4 -z-10 rounded-[2rem] bg-blue-600/15 blur-2xl"
       />
       <div
         role="region"
         aria-label="Live demo network simulation"
-        className="w-full rounded-2xl border border-white/10 bg-linear-to-b from-white/[0.07] to-white/[0.02] p-5 shadow-2xl backdrop-blur-xl sm:p-6"
+        className="live-demo-card w-full rounded-2xl border border-white/10 bg-linear-to-b from-white/[0.07] to-white/[0.02] p-5 shadow-2xl backdrop-blur-xl sm:p-6"
       >
         {/* header */}
         <div className="flex items-center justify-between">
